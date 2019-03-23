@@ -1,9 +1,9 @@
 package pri.zxx.learndemo.models.mediatorModel;
 
-import models.mediatorModel.core.Man;
-import models.mediatorModel.core.Mediator;
-import models.mediatorModel.core.Person;
-import models.mediatorModel.core.Woman;
+import pri.zxx.learndemo.models.mediatorModel.core.Man;
+import pri.zxx.learndemo.models.mediatorModel.core.Mediator;
+import pri.zxx.learndemo.models.mediatorModel.core.Person;
+import pri.zxx.learndemo.models.mediatorModel.core.Woman;
 
 /**
  * @author 一杯咖啡

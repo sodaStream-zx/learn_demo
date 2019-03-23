@@ -1,9 +1,9 @@
 package pri.zxx.learndemo.models.flyweightModel;
 
-import models.flyweightModel.core.FlyWeight;
-import models.flyweightModel.core.SharedFactory;
-import models.flyweightModel.unit.Changed;
 import org.apache.log4j.Logger;
+import pri.zxx.learndemo.models.flyweightModel.core.FlyWeight;
+import pri.zxx.learndemo.models.flyweightModel.core.SharedFactory;
+import pri.zxx.learndemo.models.flyweightModel.unit.Changed;
 
 /**
  * @author 一杯咖啡

@@ -1,6 +1,7 @@
 package pri.zxx.learndemo.threademo.threadOps.threadmoniter.threadmoniterImp;
 
-import threadOps.threadmoniter.IThreadmoniter.TaskLifecycle;
+
+import pri.zxx.learndemo.threademo.threadOps.threadmoniter.IThreadmoniter.TaskLifecycle;
 
 /**
  * @author 一杯咖啡

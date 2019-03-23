@@ -1,12 +1,12 @@
 package pri.zxx.learndemo.models.decoratorModel;
 
-import models.decoratorModel.abstractClass.NowBeverage;
-import models.decoratorModel.coffee.Espresso;
-import models.decoratorModel.coffee.HouseBlend;
-import models.decoratorModel.condiment.Mocha;
-import models.decoratorModel.condiment.Soy;
-import models.decoratorModel.condiment.Tall;
-import models.decoratorModel.condiment.Whip;
+import pri.zxx.learndemo.models.decoratorModel.abstractClass.NowBeverage;
+import pri.zxx.learndemo.models.decoratorModel.coffee.Espresso;
+import pri.zxx.learndemo.models.decoratorModel.coffee.HouseBlend;
+import pri.zxx.learndemo.models.decoratorModel.condiment.Mocha;
+import pri.zxx.learndemo.models.decoratorModel.condiment.Soy;
+import pri.zxx.learndemo.models.decoratorModel.condiment.Tall;
+import pri.zxx.learndemo.models.decoratorModel.condiment.Whip;
 
 /**
  * desc: 装饰着模式 测试类

@@ -1,8 +1,8 @@
 package pri.zxx.learndemo.LambdaAndStream.Lanbda_stream;
 
-import LambdaAndStream.entity.Employee;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;

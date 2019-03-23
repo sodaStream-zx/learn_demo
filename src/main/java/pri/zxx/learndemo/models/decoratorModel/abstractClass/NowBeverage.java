@@ -1,5 +1,6 @@
 package pri.zxx.learndemo.models.decoratorModel.abstractClass;
 
+
 import org.apache.log4j.Logger;
 
 /**

@@ -1,7 +1,7 @@
 package pri.zxx.learndemo.models.flyweightModel.core;
 
-import models.flyweightModel.unit.UnChanged;
 import org.apache.log4j.Logger;
+import pri.zxx.learndemo.models.flyweightModel.unit.UnChanged;
 
 /**
  * @author 一杯咖啡

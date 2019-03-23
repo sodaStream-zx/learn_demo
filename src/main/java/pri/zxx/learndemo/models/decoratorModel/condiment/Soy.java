@@ -1,8 +1,8 @@
 package pri.zxx.learndemo.models.decoratorModel.condiment;
 
 
-import models.decoratorModel.abstractClass.Condiment;
-import models.decoratorModel.abstractClass.NowBeverage;
+import pri.zxx.learndemo.models.decoratorModel.abstractClass.Condiment;
+import pri.zxx.learndemo.models.decoratorModel.abstractClass.NowBeverage;
 
 /**
  * desc: 调料

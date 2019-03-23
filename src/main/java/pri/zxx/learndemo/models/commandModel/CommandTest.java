@@ -1,8 +1,8 @@
 package pri.zxx.learndemo.models.commandModel;
 
-import models.commandModel.core.Invoker;
-import models.commandModel.core.MyReciver;
-import models.commandModel.core.OnCommand;
+import pri.zxx.learndemo.models.commandModel.core.Invoker;
+import pri.zxx.learndemo.models.commandModel.core.MyReciver;
+import pri.zxx.learndemo.models.commandModel.core.OnCommand;
 
 /**
  * @author 一杯咖啡

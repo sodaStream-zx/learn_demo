@@ -1,7 +1,7 @@
 package pri.zxx.learndemo.models.decoratorModel.coffee;
 
 
-import models.decoratorModel.abstractClass.NowBeverage;
+import pri.zxx.learndemo.models.decoratorModel.abstractClass.NowBeverage;
 
 /**
  * @author 一杯咖啡

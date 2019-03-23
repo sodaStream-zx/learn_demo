@@ -1,6 +1,7 @@
 package pri.zxx.learndemo.models.builder.componet;
 
-import models.builder.componet.IComponet.IComputerBuilder;
+
+import pri.zxx.learndemo.models.builder.componet.IComponet.IComputerBuilder;
 
 /**
  * @author 一杯咖啡

@@ -1,8 +1,9 @@
 package pri.zxx.learndemo.threademo.threadOps.threadmoniter.threadmoniterImp;
 
-import threadOps.threadmoniter.IThreadmoniter.Observable;
-import threadOps.threadmoniter.IThreadmoniter.Task;
-import threadOps.threadmoniter.IThreadmoniter.TaskLifecycle;
+
+import pri.zxx.learndemo.threademo.threadOps.threadmoniter.IThreadmoniter.Observable;
+import pri.zxx.learndemo.threademo.threadOps.threadmoniter.IThreadmoniter.Task;
+import pri.zxx.learndemo.threademo.threadOps.threadmoniter.IThreadmoniter.TaskLifecycle;
 
 import java.util.concurrent.TimeUnit;
 

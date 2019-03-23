@@ -1,7 +1,7 @@
 package pri.zxx.learndemo.models.commandModel.core;
 
-import models.commandModel.core.abstractObj.Revicer;
 import org.apache.log4j.Logger;
+import pri.zxx.learndemo.models.commandModel.core.abstractObj.Revicer;
 
 /**
  * @author 一杯咖啡

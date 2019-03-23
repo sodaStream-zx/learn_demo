@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.threademo.threadOps.readwritelock.lockimps;
 
-import threadOps.readwritelock.ILock.Lock;
-import threadOps.readwritelock.ILock.ReadWriteLock;
+
+import pri.zxx.learndemo.threademo.threadOps.readwritelock.ILock.Lock;
+import pri.zxx.learndemo.threademo.threadOps.readwritelock.ILock.ReadWriteLock;
 
 /**
  * @author 一杯咖啡

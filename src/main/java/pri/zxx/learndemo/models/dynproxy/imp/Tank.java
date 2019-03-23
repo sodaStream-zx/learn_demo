@@ -1,6 +1,7 @@
 package pri.zxx.learndemo.models.dynproxy.imp;
 
-import models.dynproxy.interfaces.Moveable;
+
+import pri.zxx.learndemo.models.dynproxy.interfaces.Moveable;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;

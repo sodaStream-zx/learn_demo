@@ -1,6 +1,7 @@
 package pri.zxx.learndemo.models.dynproxy.proxy;
 
-import models.dynproxy.imp.Tank;
+
+import pri.zxx.learndemo.models.dynproxy.imp.Tank;
 
 /**
  * @author 一杯咖啡

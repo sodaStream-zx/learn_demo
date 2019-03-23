@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.threademo.threadOps.readwritelock;
 
-import threadOps.readwritelock.ILock.Lock;
-import threadOps.readwritelock.ILock.ReadWriteLock;
+
+import pri.zxx.learndemo.threademo.threadOps.readwritelock.ILock.Lock;
+import pri.zxx.learndemo.threademo.threadOps.readwritelock.ILock.ReadWriteLock;
 
 import java.util.ArrayList;
 import java.util.List;

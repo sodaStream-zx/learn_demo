@@ -1,6 +1,7 @@
 package pri.zxx.learndemo.models.dynproxy.proxy;
 
-import models.dynproxy.interfaces.Moveable;
+
+import pri.zxx.learndemo.models.dynproxy.interfaces.Moveable;
 
 /**
  * @author 一杯咖啡

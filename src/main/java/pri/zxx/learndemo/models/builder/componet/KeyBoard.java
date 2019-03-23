@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.models.builder.componet;
 
-import models.builder.componet.IComponet.AbstractComponent;
+
 import org.apache.log4j.Logger;
+import pri.zxx.learndemo.models.builder.componet.IComponet.AbstractComponent;
 
 /**
  * @author 一杯咖啡

@@ -1,8 +1,8 @@
 package pri.zxx.learndemo.models.mementoModel;
 
-import models.mementoModel.core.CareTaker;
-import models.mementoModel.core.Originator;
 import org.apache.log4j.Logger;
+import pri.zxx.learndemo.models.mementoModel.core.CareTaker;
+import pri.zxx.learndemo.models.mementoModel.core.Originator;
 
 /**
  * @author 一杯咖啡
