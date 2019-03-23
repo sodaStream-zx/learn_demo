@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.forkJoin;
+package pri.zxx.learndemo.threademo.forkJoin;
 
 /**
  * @author Twilight
