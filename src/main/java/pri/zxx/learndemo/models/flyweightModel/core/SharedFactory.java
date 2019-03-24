@@ -1,9 +1,9 @@
 package pri.zxx.learndemo.models.flyweightModel.core;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.flyweightModel.unit.UnChanged;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @createTime 2018-12-25-22:55
  */
 public class SharedFactory {
-    private static final Logger log = Logger.getLogger(SharedFactory.class);
+    private static final Logger log = Logger.getLogger(SharedFactory.class.getName());
     private static HashMap<String, FlyWeight> pool = new HashMap<>();
 
     //获取可共享单元实例

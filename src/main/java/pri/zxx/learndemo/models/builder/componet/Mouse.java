@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.models.builder.componet;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.builder.componet.IComponet.AbstractComponent;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -9,7 +10,7 @@ import pri.zxx.learndemo.models.builder.componet.IComponet.AbstractComponent;
  * @createTime 2018-12-23-17:07
  */
 public class Mouse extends AbstractComponent {
-    private static final Logger log = Logger.getLogger(Mouse.class);
+    private static final Logger log = Logger.getLogger(Mouse.class.getName());
 
     public Mouse(String name, Double price, String from) {
         super(name, price, from);

@@ -74,7 +74,7 @@ public class MyClassLoader extends ClassLoader {
             Files.copy(classFullPath, baos);
             return baos.toByteArray();
         } catch (IOException e) {
-            throw new ClassNotFoundException("load the class" + name + " occur error.", e);
+            throw new ClassNotFoundException("load the class" + name + " occur warning.", e);
         }
     }
 

@@ -3,11 +3,11 @@ package pri.zxx.learndemo.httpclientdemo;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -15,7 +15,7 @@ import java.io.IOException;
  * @createTime 2019-01-03-22:12
  */
 public class HtmlUnitDemo {
-    private static final Logger log = Logger.getLogger(HtmlUnitDemo.class);
+    private static final Logger log = Logger.getLogger(HtmlUnitDemo.class.getName());
 
     public static void main(String[] args) throws IOException {
         String url = "https://www.toutiao.com/";

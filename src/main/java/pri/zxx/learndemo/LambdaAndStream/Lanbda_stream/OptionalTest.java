@@ -1,10 +1,10 @@
 package pri.zxx.learndemo.LambdaAndStream.Lanbda_stream;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * @author Twilight
@@ -13,7 +13,7 @@ import java.util.Optional;
  */
 public class OptionalTest {
 
-    private static final Logger log = Logger.getLogger(OptionalTest.class);
+    private static final Logger log = Logger.getLogger(OptionalTest.class.getName());
 
     @Test
     public void test() {

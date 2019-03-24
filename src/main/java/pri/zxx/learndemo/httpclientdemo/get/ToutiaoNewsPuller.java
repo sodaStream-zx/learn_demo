@@ -1,7 +1,6 @@
 package pri.zxx.learndemo.httpclientdemo.get;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -9,6 +8,7 @@ import org.jsoup.select.Elements;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * @createTime 2019-01-07-21:21
  */
 public class ToutiaoNewsPuller implements NewsPull {
-    private static final Logger logger = Logger.getLogger(ToutiaoNewsPuller.class);
+    private static final Logger logger = Logger.getLogger(ToutiaoNewsPuller.class.getName());
     private static final String TOUTIAO_URL = "https://www.toutiao.com";
     String url = "https://dedicated.wallstreetcn.com/toutiao/articles/3465030?tt_group_id=6643672233480815117";
     private NewsService newsService = new NewsService();
@@ -36,7 +36,7 @@ public class ToutiaoNewsPuller implements NewsPull {
         try {
             html = getHtmlFromUrl(url, true);
         } catch (Exception e) {
-            logger.error("获取今日头条主页失败！");
+            logger.warning("获取今日头条主页失败！");
             e.printStackTrace();
             return;
         }
@@ -80,7 +80,7 @@ public class ToutiaoNewsPuller implements NewsPull {
                 Element cont = contentHtml.getElementsByTag("article").get(0);
                 logger.info("con = " + cont.text());
                 logger.info("---------------------------------------");
-                logger.error("获取新闻《{}》内容失败！" + news.getTitle());
+                logger.warning("获取新闻《{}》内容失败！" + news.getTitle());
                 return;
             }
 

@@ -1,11 +1,11 @@
 package pri.zxx.learndemo.LambdaAndStream.Lanbda_stream;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  * @createTime 2019-01-13-20:31
  */
 public class StreamOperationsTest {
-    private final Logger log = Logger.getLogger(StreamOperationsTest.class);
+    private final Logger log = Logger.getLogger(StreamOperationsTest.class.getName());
     private List<Employee> employees = Arrays.asList(
             new Employee("ZHANSAN ", 18, 1000.0, Employee.Status.FREE),
             new Employee("LISI ", 26, 6000.0, Employee.Status.VOCATION),
