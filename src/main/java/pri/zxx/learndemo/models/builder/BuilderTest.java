@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.models.builder;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.builder.componet.*;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -9,7 +10,7 @@ import pri.zxx.learndemo.models.builder.componet.*;
  * @createTime 2018-12-23-17:30
  */
 public class BuilderTest {
-    private static final Logger log = Logger.getLogger(BuilderTest.class);
+    private static final Logger log = Logger.getLogger(BuilderTest.class.getName());
 
     public static void main(String[] args) {
         Computer computer = new Computer.Builder()

@@ -1,9 +1,10 @@
 package pri.zxx.learndemo.models.flyweightModel;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.flyweightModel.core.FlyWeight;
 import pri.zxx.learndemo.models.flyweightModel.core.SharedFactory;
 import pri.zxx.learndemo.models.flyweightModel.unit.Changed;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -11,7 +12,7 @@ import pri.zxx.learndemo.models.flyweightModel.unit.Changed;
  * @createTime 2018-12-25-23:04
  */
 public class FlyWeightTest {
-    private static final Logger log = Logger.getLogger(FlyWeightTest.class);
+    private static final Logger log = Logger.getLogger(FlyWeightTest.class.getName());
 
     public static void main(String[] args) {
 

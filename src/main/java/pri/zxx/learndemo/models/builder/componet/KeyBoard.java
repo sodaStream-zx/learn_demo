@@ -1,8 +1,9 @@
 package pri.zxx.learndemo.models.builder.componet;
 
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.builder.componet.IComponet.AbstractComponent;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -10,7 +11,7 @@ import pri.zxx.learndemo.models.builder.componet.IComponet.AbstractComponent;
  * @createTime 2018-12-23-17:07
  */
 public class KeyBoard extends AbstractComponent {
-    private static final Logger log = Logger.getLogger(KeyBoard.class);
+    private static final Logger log = Logger.getLogger(KeyBoard.class.getName());
 
     public KeyBoard(String name, Double price, String from) {
         super(name, price, from);

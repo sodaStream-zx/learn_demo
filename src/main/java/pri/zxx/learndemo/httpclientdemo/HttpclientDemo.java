@@ -6,12 +6,12 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.log4j.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -19,7 +19,7 @@ import java.io.InputStream;
  * @createTime 2019-01-03-22:12
  */
 public class HttpclientDemo {
-    private static final Logger log = Logger.getLogger(HttpclientDemo.class);
+    private static final Logger log = Logger.getLogger(HttpclientDemo.class.getName());
 
     public static void main(String[] args) {
         CloseableHttpClient client = HttpClients.createDefault();

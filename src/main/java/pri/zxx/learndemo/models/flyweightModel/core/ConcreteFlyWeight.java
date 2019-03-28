@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.models.flyweightModel.core;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.flyweightModel.unit.UnChanged;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -9,7 +10,7 @@ import pri.zxx.learndemo.models.flyweightModel.unit.UnChanged;
  * @createTime 2018-12-25-22:39
  */
 public class ConcreteFlyWeight extends FlyWeight {
-    private static final Logger log = Logger.getLogger(ConcreteFlyWeight.class);
+    private static final Logger log = Logger.getLogger(ConcreteFlyWeight.class.getName());
 
     protected ConcreteFlyWeight(UnChanged unChanged) {
         super(unChanged);

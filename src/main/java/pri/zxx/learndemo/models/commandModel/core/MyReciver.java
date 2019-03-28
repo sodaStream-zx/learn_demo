@@ -1,7 +1,8 @@
 package pri.zxx.learndemo.models.commandModel.core;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.commandModel.core.abstractObj.Revicer;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -9,7 +10,7 @@ import pri.zxx.learndemo.models.commandModel.core.abstractObj.Revicer;
  * @createTime 2018-12-23-3:02
  */
 public class MyReciver implements Revicer {
-    private static final Logger log = Logger.getLogger(MyReciver.class);
+    private static final Logger log = Logger.getLogger(MyReciver.class.getName());
 
     @Override
     public void action() {

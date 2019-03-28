@@ -7,7 +7,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -24,7 +24,7 @@ import java.util.List;
  * @createTime 2019-01-03-22:12
  */
 public class JsoupDemo {
-    private static final Logger log = Logger.getLogger(JsoupDemo.class);
+    private static final Logger log = Logger.getLogger(JsoupDemo.class.getName());
 
     public static Document getDoc(String url) {
         CloseableHttpClient client = HttpClients.createDefault();

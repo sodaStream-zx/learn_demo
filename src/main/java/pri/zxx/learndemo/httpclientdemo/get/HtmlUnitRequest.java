@@ -3,12 +3,12 @@ package pri.zxx.learndemo.httpclientdemo.get;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.logging.Logger;
 
 /**
  * @author Twilight
@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
  * @createTime 2019-01-07-22:01
  */
 public class HtmlUnitRequest implements ISendRequest {
-    private static final Logger log = Logger.getLogger(HtmlUnitRequest.class);
+    private static final Logger log = Logger.getLogger(HtmlUnitRequest.class.getName());
 
     public static void main(String[] args) {
         String url = "http://www.youtube.com/";

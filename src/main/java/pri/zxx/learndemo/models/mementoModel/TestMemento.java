@@ -1,8 +1,9 @@
 package pri.zxx.learndemo.models.mementoModel;
 
-import org.apache.log4j.Logger;
 import pri.zxx.learndemo.models.mementoModel.core.CareTaker;
 import pri.zxx.learndemo.models.mementoModel.core.Originator;
+
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -10,7 +11,7 @@ import pri.zxx.learndemo.models.mementoModel.core.Originator;
  * @createTime 2018-12-23-23:41
  */
 public class TestMemento {
-    private static final Logger log = Logger.getLogger(TestMemento.class);
+    private static final Logger log = Logger.getLogger(TestMemento.class.getName());
 
     public static void main(String[] args) {
         Originator originator = new Originator("zxx", "1234", true);

@@ -1,11 +1,10 @@
 package pri.zxx.learndemo.models.mementoModel.core;
 
-import org.apache.log4j.Logger;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * @author 一杯咖啡
@@ -13,7 +12,7 @@ import java.util.Set;
  * @createTime 2018-12-23-23:37
  */
 public class CareTaker {
-    private static final Logger log = Logger.getLogger(CareTaker.class);
+    private static final Logger log = Logger.getLogger(CareTaker.class.getName());
     private final Map<String, Memento> mementoMap = new HashMap<>(2);
 
     public void addMemento(String mementoTip, Memento memento) {

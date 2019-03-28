@@ -1,12 +1,12 @@
 package pri.zxx.learndemo.httpclientdemo.get;
 
-import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * @author Twilight
@@ -14,7 +14,7 @@ import java.util.HashSet;
  * @createTime 2019-01-07-21:50
  */
 public class SohuNews implements NewsPull {
-    private static final Logger logger = Logger.getLogger(SohuNews.class);
+    private static final Logger logger = Logger.getLogger(SohuNews.class.getName());
     private String url = "http://news.sohu.com/";
     private NewsService newsService = new NewsService();
 
@@ -31,7 +31,7 @@ public class SohuNews implements NewsPull {
         try {
             html = getHtmlFromUrl(url, false);
         } catch (Exception e) {
-            logger.error("==============获取搜狐首页失败: {}=============" + url);
+            logger.warning("==============获取搜狐首页失败: {}=============" + url);
             e.printStackTrace();
             return;
         }
@@ -74,7 +74,7 @@ public class SohuNews implements NewsPull {
                 newsService.saveNews(news);
                 logger.info("抽取搜狐新闻《{}》成功！" + news.getTitle());
             } catch (Exception e) {
-                logger.error("新闻抽取失败:{}" + news.getUrl());
+                logger.warning("新闻抽取失败:{}" + news.getUrl());
                 e.printStackTrace();
             }
         });
