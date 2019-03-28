@@ -5,6 +5,7 @@ import pri.zxx.learndemo.models.mementoModel.core.Originator;
 
 import java.util.logging.Logger;
 
+
 /**
  * @author 一杯咖啡
  * @desc 备忘录模式 测试类

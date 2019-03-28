@@ -1,4 +1,4 @@
-package pri.zxx.learndemo;
+package pri.zxx;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
