@@ -65,9 +65,12 @@ public class TimeApiTest {
         for (int i = 0; i < 10; i++) {
             results.add(pool.submit(callable));
         }
-
-        for (Future<LocalDate> x : results) {
-            log.info(String.valueOf(x.get()));
+        try {
+            for (Future<LocalDate> x : results) {
+                log.info(String.valueOf(x.get(1, TimeUnit.SECONDS)));
+            }
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
         pool.shutdown();
     }
