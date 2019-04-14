@@ -1,5 +1,6 @@
 package pri.zxx.learndemo.threademo.futureTaskDemo;
 
+import io.netty.util.concurrent.DefaultThreadFactory;
 import org.junit.Test;
 
 import java.util.Optional;
@@ -13,14 +14,14 @@ import java.util.stream.Stream;
  */
 public class FutureTaskTest {
     @Test
-    public void futureTest() throws ExecutionException, InterruptedException {
+    public void futureTest() throws ExecutionException, InterruptedException, TimeoutException {
         //建立线程池
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 1,
                 20,
                 20L,
                 TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>());
+                new LinkedBlockingQueue<>(), new DefaultThreadFactory("这是线程池名哦"));
         //执行任务
         Future<Integer> result = executor.submit(() -> {
             try {
@@ -43,15 +44,23 @@ public class FutureTaskTest {
             System.out.println("读取超时");
         }
 
-        //futureTask
-        Future su = executor.submit(new FutureTask<>(() -> {
+        FutureTask ft = new FutureTask(() -> {
             Optional<Integer> reduce = Stream.iterate(1, s -> s + 2).limit(10).reduce(Integer::sum);
             if (reduce.isPresent()) {
                 return reduce.get();
             } else {
                 return 0;
             }
-        }));
-        System.out.println(su.get());
+        });
+        executor.submit(ft);
+        System.out.println(ft.get());
+        //futureTask
+        executor.submit(ft);
+        if (ft.isDone()) {
+            System.out.println(ft.isDone());
+            System.out.println(ft.get(1, TimeUnit.SECONDS));
+        } else {
+            System.out.println("任务出错");
+        }
     }
 }
