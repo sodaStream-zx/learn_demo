@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.core.RedisTemplate;
-import pri.zxx.learndemo.redis.RedisUserMap;
 
 import javax.annotation.PostConstruct;
 
@@ -15,8 +14,8 @@ public class LearnDemoApplication {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Autowired
-    RedisUserMap redisUserMap;
+//    @Autowired
+//    RedisUserMap redisUserMap;
 
     public static void main(String[] args) {
         SpringApplication.run(LearnDemoApplication.class, args);
@@ -28,6 +27,6 @@ public class LearnDemoApplication {
         redisTemplate.setKeySerializer(new FastJsonRedisSerializer(Object.class));
         redisTemplate.setHashKeySerializer(new FastJsonRedisSerializer(Object.class));
         redisTemplate.setHashValueSerializer(new FastJsonRedisSerializer(Object.class));
-        this.redisUserMap.ConcurrentTest();
+//        this.redisUserMap.ConcurrentTest();
     }
 }

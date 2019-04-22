@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 //@SpringBootTest
 //@RunWith(SpringJUnit4ClassRunner.class)
-@Service
+//@Service
 public class RedisUserMap {
     private static final Logger log = LoggerFactory.getLogger(RedisOpsTest.class);
     @Autowired
@@ -84,8 +83,9 @@ public class RedisUserMap {
     }
 
     //远程清空缓存
-    public void deleteCache(Long realId) {
-        this.cacheData.remove(realId);
+    public Boolean deleteCache(Long realId) {
+        HashMap<String, Integer> remove = this.cacheData.remove(realId);
+        return !remove.containsKey(realId);
     }
 
     //复制

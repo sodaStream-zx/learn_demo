@@ -81,7 +81,7 @@ public class Human {
                 '}';
     }
 
-    public static final class Builder {
+    public static class Builder {
         //something important
         private String name;
         private String number;
