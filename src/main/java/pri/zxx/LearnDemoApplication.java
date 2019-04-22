@@ -1,10 +1,10 @@
 package pri.zxx;
 
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import javax.annotation.PostConstruct;
 
@@ -20,9 +20,9 @@ public class LearnDemoApplication {
 
     @PostConstruct
     public void redisTemplate() {
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new StringRedisSerializer());
-//        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashValueSerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new FastJsonRedisSerializer(Object.class));
+        redisTemplate.setKeySerializer(new FastJsonRedisSerializer(Object.class));
+        redisTemplate.setHashKeySerializer(new FastJsonRedisSerializer(Object.class));
+        redisTemplate.setHashValueSerializer(new FastJsonRedisSerializer(Object.class));
     }
 }
