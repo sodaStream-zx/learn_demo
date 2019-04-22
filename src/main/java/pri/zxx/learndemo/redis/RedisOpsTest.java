@@ -30,7 +30,7 @@ public class RedisOpsTest {
 
     @Test
     public void delete() {
-        String key = "test*";
+        String key = "*-dataMap";
         Set keys = redisTemplate.keys(key);
         System.out.println("sieze:" + keys.size());
         keys.stream().forEach(k -> redisTemplate.delete(k));
