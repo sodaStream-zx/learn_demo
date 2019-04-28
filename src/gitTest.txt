@@ -1,8 +1,5 @@
 娃哈哈2444
-<<<<<<< Updated upstream
 今天天气不错哟
 2sdfaasdasasd
 asd
-=======
 我又加了新东西
->>>>>>> Stashed changes
