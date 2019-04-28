@@ -166,11 +166,11 @@ public class StreamOperationsTest {
         log.info("---------- collector.counting() = " + totalNum + "---------");
         //averaging* 平均值
         //Summing* 总和
-        log.info("---------- collector.grouping && partitioningBy---------");
+        System.out.println("---------- collector.grouping && partitioningBy---------");
         Map<Employee.Status, List<Employee>> groupMap = employees.stream().collect(Collectors.groupingBy(Employee::getStatus));
-        log.info(groupMap.toString());
+        System.out.println(groupMap.toString());
         Map<Boolean, List<Employee>> partinGroup = employees.stream().collect(Collectors.partitioningBy((e) -> e.getAge() > 20));
-        log.info(partinGroup.toString());
+        System.out.println(partinGroup.toString());
 
     }
 

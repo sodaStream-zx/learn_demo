@@ -4,7 +4,9 @@ import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 
@@ -14,7 +16,7 @@ public class LearnDemoApplication {
     @Autowired
     private RedisTemplate redisTemplate;
 
-//    @Autowired
+// /   @Autowired
 //    RedisUserMap redisUserMap;
 
     public static void main(String[] args) {
@@ -28,5 +30,10 @@ public class LearnDemoApplication {
         redisTemplate.setHashKeySerializer(new FastJsonRedisSerializer(Object.class));
         redisTemplate.setHashValueSerializer(new FastJsonRedisSerializer(Object.class));
 //        this.redisUserMap.ConcurrentTest();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }
