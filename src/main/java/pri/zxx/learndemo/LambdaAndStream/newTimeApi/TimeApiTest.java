@@ -57,10 +57,10 @@ public class TimeApiTest {
 
     @Test
     public void test2() throws ExecutionException, InterruptedException {
-        DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyyMMdd");
+        DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         ExecutorService pool = Executors.newFixedThreadPool(10);
 
-        Callable<LocalDate> callable = () -> LocalDate.parse("20190131", dft);
+        Callable<LocalDate> callable = () -> LocalDate.parse("2019-01-31", dft);
         List<Future> results = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             results.add(pool.submit(callable));
