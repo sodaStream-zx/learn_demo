@@ -14,17 +14,27 @@ import java.util.stream.Stream;
  */
 public class Localtions {
     //记录文件
-    private LinkedHashMap<Integer, String> data = new LinkedHashMap<>();
+    private LinkedHashMap<Integer, String> signalData = new LinkedHashMap<>();
     //记录坐标
     private LinkedHashMap<Integer, String> local = new LinkedHashMap<>();
 
     public static void main(String[] args) {
         Localtions localtions = new Localtions();
+//        String[] locs = new String[]{
+//                "Plane1 1 1 1",
+//                "Plane1 1 1 1 1 2 3",
+//                "Plane1 2 3 4 1 1 1",
+//                "Plane1 3 4 5",
+//                "Plane1 1 1 1 1 2 3",
+//                "Plane1 2 4 5 1 2 3",
+//                "Plane1 2 2 3 1 2 3",
+//                "Plane1 1 4 5 1 2 3"
+//        };
         String[] locs = new String[]{
-                "Plane1 1 1 1",
-                "Plane1 1 1 1 1 2 3",
-                "Plane1 2 3 4 1 1 1",
-                "Plane1 3 4 5",
+                "Plane1 0 -1 -2",
+                "Plane1 0 -1 -2 1 2 3",
+                "Plane1 1 1 1 1 1 1",
+                "Plane1 2 2 2",
                 "Plane1 1 1 1 1 2 3",
                 "Plane1 2 4 5 1 2 3",
                 "Plane1 2 2 3 1 2 3",
@@ -34,7 +44,7 @@ public class Localtions {
         for (int i = 0; i < locs.length; i++) {
             localtions.addData(i, locs[i]);
         }
-        LinkedHashMap<Integer, String> data = localtions.getData();
+        LinkedHashMap<Integer, String> data = localtions.getSignalData();
         LinkedHashMap<Integer, String> local = localtions.getLocal();
         System.out.println("-------------------");
         System.out.println("record:" + data);
@@ -42,11 +52,13 @@ public class Localtions {
         System.out.println("-------------------");
 
 
+        String id0 = localtions.getDataById(0);
         String id1 = localtions.getDataById(1);
         String id2 = localtions.getDataById(2);
         String id3 = localtions.getDataById(3);
         String id4 = localtions.getDataById(4);
         String id100 = localtions.getDataById(100);
+        System.out.println(id0);
         System.out.println(id1);
         System.out.println(id2);
         System.out.println(id3);
@@ -55,8 +67,8 @@ public class Localtions {
 
     }
 
-    public LinkedHashMap<Integer, String> getData() {
-        return data;
+    public LinkedHashMap<Integer, String> getSignalData() {
+        return signalData;
     }
 
     public LinkedHashMap<Integer, String> getLocal() {
@@ -67,7 +79,7 @@ public class Localtions {
     public synchronized void addData(Integer id, String msg) {
         String[] split = msg.split("\\s+");
         Assert.assertTrue("输入参数有误", (split.length == 4 || split.length == 7));
-        data.putIfAbsent(id, msg);
+        signalData.putIfAbsent(id, msg);
         Integer len = split.length;
         if (id == 0 && len == 4) {
             //第一条消息，直接放进去
