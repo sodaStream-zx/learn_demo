@@ -34,11 +34,11 @@ public class Localtions {
         for (int i = 0; i < locs.length; i++) {
             localtions.addData(i, locs[i]);
         }
-        LinkedHashMap<Integer, String> local = localtions.getLocal();
         LinkedHashMap<Integer, String> data = localtions.getData();
+        LinkedHashMap<Integer, String> local = localtions.getLocal();
         System.out.println("-------------------");
-        System.out.println(local);
-        System.out.println(data);
+        System.out.println("record:" + data);
+        System.out.println("local:" + local);
         System.out.println("-------------------");
 
 
@@ -59,16 +59,8 @@ public class Localtions {
         return data;
     }
 
-    public void setData(LinkedHashMap<Integer, String> data) {
-        this.data = data;
-    }
-
     public LinkedHashMap<Integer, String> getLocal() {
         return local;
-    }
-
-    public void setLocal(LinkedHashMap<Integer, String> local) {
-        this.local = local;
     }
 
     //输入接口
