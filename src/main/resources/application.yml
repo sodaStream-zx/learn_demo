@@ -1,0 +1,15 @@
+server:
+  port: 80
+spring:
+  application:
+    name: zxx-learn-demo
+  redis:
+    #    host: redis-master.dc.zz
+    host: 47.94.208.1
+    port: 6379
+logging:
+  file: logs/log.log
+  level.root: warn
+  pattern:
+    console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
+    file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
