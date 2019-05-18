@@ -11,5 +11,5 @@ logging:
   file: logs/log.log
   level.root: warn
   pattern:
-    console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
-    file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
