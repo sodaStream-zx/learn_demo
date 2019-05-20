@@ -38,8 +38,18 @@ public class CollectionsTest {
 
     @Test
     public void myTest2() {
-        ArrayList<Employee> employees = new ArrayList<>();
-        employees.sort(Comparator.comparingInt(Employee::getAge).thenComparing(Employee::getName).reversed());
-
+        List<Employee> employees = Arrays.asList(
+                new Employee("ZHANSAN ", 18, 1000.0, Employee.Status.FREE),
+                new Employee("LISI ", 26, 6000.0, Employee.Status.VOCATION),
+                new Employee("ella ", 38, 2000.0, Employee.Status.BUSY),
+                new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE),
+                new Employee("WANGER ", 54, 5000.0, Employee.Status.BUSY),
+                new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE),
+                new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE),
+                new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE),
+                new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE)
+        );
+        employees.sort(Comparator.comparingInt(Employee::getAge).thenComparing(Employee::getName));
+        employees.forEach(System.out::println);
     }
 }

@@ -9,10 +9,10 @@ public class EatNoodelTest {
     public static void main(String[] args) {
         IEatTool knife = new EatTool("刀");
         IEatTool fork = new EatTool("叉");
-        new TableEatNoodle("张三", knife, fork).start();
-        new TableEatNoodle("李四", knife, fork).start();
-        // new TableEatNoodle("王五", fork, knife).start();
-        // new TableEatNoodle("王五", knife, fork).start();
-        //new TableEatNoodle("李四", fork, knife).start();
+//        new TableEatNoodle("张三", knife, fork).start();
+//        new TableEatNoodle("李四", knife, fork).start();
+        new TableEatNoodle("王五", fork, knife).start();
+        new TableEatNoodle("王五", knife, fork).start();
+        new TableEatNoodle("李四", fork, knife).start();
     }
 }
