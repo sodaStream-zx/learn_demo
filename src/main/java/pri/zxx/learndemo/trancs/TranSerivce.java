@@ -19,7 +19,7 @@ public class TranSerivce {
     private Confirmed confirmed;
 
     public void notifyStatus(String str) throws InterruptedException {
-        log.warn("1状态修改服务" + str);
+        log.warn(str + "1状态修改服务");
         TimeUnit.SECONDS.sleep(2);
         this.transferToTranc(true);
         while (confirmed.getServicesNum() <= 3) {
@@ -36,7 +36,7 @@ public class TranSerivce {
     }
 
     public void notufyData(String str) throws InterruptedException {
-        log.warn("2修改数据服务" + str);
+        log.warn(str + "2修改数据服务");
         TimeUnit.SECONDS.sleep(1);
         this.transferToTranc(true);
         while (confirmed.getServicesNum() <= 3) {
@@ -53,9 +53,9 @@ public class TranSerivce {
     }
 
     public void boundData(String str) throws InterruptedException {
-        log.warn("3绑定数据服务" + str);
+        log.warn(str + "3绑定数据服务");
         TimeUnit.SECONDS.sleep(2);
-        this.transferToTranc(false);
+        this.transferToTranc(true);
         while (confirmed.getServicesNum() <= 3) {
             if (confirmed.getServicesNum() == 3) {
                 if (confirmed.getFlag()) {

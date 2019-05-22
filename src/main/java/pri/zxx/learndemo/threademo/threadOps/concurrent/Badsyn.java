@@ -17,10 +17,15 @@ public class Badsyn {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Badsyn badsyn = new Badsyn();
         Thread t1 = new Thread(Badsyn::synMethod, "Thread-1");
         t1.start();
+        TimeUnit.MILLISECONDS.sleep(200);
         Thread t2 = new Thread(Badsyn::synMethod, "Thread-2");
+        t2.start();
+        t2.interrupt();
+        System.out.println(t2.isInterrupted());
+        System.out.println(t2.getState());
     }
 }

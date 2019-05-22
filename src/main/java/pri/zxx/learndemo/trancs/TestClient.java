@@ -23,7 +23,7 @@ public class TestClient {
 
     @Test
     public void myTest() throws InterruptedException {
-        String str = "分布式服务";
+        String str = "分布式服务--";
         ThreadPoolExecutor ex = new ThreadPoolExecutor(3, 3, 500, TimeUnit.MILLISECONDS, new SynchronousQueue<>());
         ex.execute(() -> {
             try {
