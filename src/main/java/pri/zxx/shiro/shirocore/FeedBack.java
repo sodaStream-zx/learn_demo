@@ -12,7 +12,7 @@ public class FeedBack {
     private String feedbackLabel;
     private String createTime;
     private String source;
-    private String verison;
+    private String version;
 
     @Override
     public String toString() {
@@ -23,7 +23,7 @@ public class FeedBack {
                 ", feedbackLabel='" + feedbackLabel + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", source='" + source + '\'' +
-                ", verison='" + verison + '\'' +
+                ", verison='" + version + '\'' +
                 '}';
     }
 
@@ -35,12 +35,12 @@ public class FeedBack {
         this.source = source;
     }
 
-    public String getVerison() {
-        return verison;
+    public String getVersion() {
+        return version;
     }
 
-    public void setVerison(String verison) {
-        this.verison = verison;
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public Long getId() {
