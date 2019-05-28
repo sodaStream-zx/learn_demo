@@ -31,14 +31,15 @@ public class FeedBackMapperTest {
 
     @Test
     public void feedBack() {
-        Map s = feedBackController.feedBack();
-        System.out.println(s);
+        Map<String, Long> stringLongMap = feedBackController.feedBackPath();
+        System.out.println(stringLongMap);
     }
 
 
     @Test
     public void listOfFeedBacksByTime() {
-        List<FeedBack> list = feedBackMapper.listOfFeedBacksByConditions("2019-05-25", "2019-05-27", "A", "1");
+//        List<FeedBack> list = feedBackMapper.listOfFeedBacksByConditions("2019-05-25", "2019-05-27", "A", "1");
+        List<FeedBack> list = feedBackMapper.listOfFeedBacksByConditions(null, null, null, null);
         list.forEach(System.out::println);
     }
 
