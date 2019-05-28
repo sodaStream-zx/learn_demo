@@ -20,7 +20,7 @@ public class HelloWorld {
         //绑定securityManager到Utils
         SecurityUtils.setSecurityManager(instance);
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("zxx", "1234");
+        UsernamePasswordToken token = new UsernamePasswordToken("jack", "1234");
         try {
             subject.login(token);
             System.out.println("登录成功");
