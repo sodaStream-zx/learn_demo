@@ -23,7 +23,7 @@ public class FeedBack {
                 ", feedbackLabel='" + feedbackLabel + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", source='" + source + '\'' +
-                ", verison='" + version + '\'' +
+                ", version='" + version + '\'' +
                 '}';
     }
 
