@@ -31,6 +31,6 @@ public interface ReadWriteLock {
     //获取当前等待获取写入锁的线程数
     int getWaitingWriters();
 
-    //获取道歉正在读的线程数
+    //获取当前正在读的线程数
     int getReadingReaders();
 }

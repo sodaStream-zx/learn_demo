@@ -45,9 +45,9 @@ public class InterruptThreadTest {
                 //interrupt 调用该方法会将interrupted 标识 改为 true
                 myt.interrupt();
                 //isInterrupted 调用改方法会擦除 interrupted标识 变为 false
-                // System.out.println("test---" + myt.isInterrupted());
+                System.out.println("test---" + myt.isInterrupted());
                 //InterruptThreadTest.running = false;
-
+                myt.notify();
             }
         }, "interruptorThread");
         //monitor.setDaemon(true);
