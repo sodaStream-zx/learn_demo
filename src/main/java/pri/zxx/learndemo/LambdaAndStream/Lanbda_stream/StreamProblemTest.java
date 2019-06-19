@@ -7,7 +7,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -48,5 +50,12 @@ public class StreamProblemTest {
         Long sum = LongStream.range(0, 1000000000L).parallel().reduce(0, Long::sum);
         Instant end = Instant.now();
         System.out.println("time : " + Duration.between(start, end).toMillis() + "mills,result : " + sum);
+    }
+
+    @Test
+    public void test4() {
+        List<Integer> collect = Stream.iterate(1, integer -> integer + 1).limit(100).collect(Collectors.toList());
+        Map<Integer, List<Integer>> collect1 = collect.stream().collect(Collectors.groupingBy(integer -> (integer - 1) / 50));
+        System.out.println(collect1);
     }
 }
