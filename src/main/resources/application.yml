@@ -8,15 +8,26 @@ spring:
     host: 47.94.208.1
     port: 6379
   datasource:
-    url: jdbc:mysql://localhost:3306/yunce?useUnicode=true&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true
     username: root
     password: zxx1994
-    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-request-size: '20MB'
+      max-file-size: '20MB'
 
 logging:
   file: logs/log.log
   level.root: warn
-  pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
-    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
+  #  pattern:
+  #    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
+  #    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
+  level.pri.zxx.webdemo.mappers: debug
+swagger:
+  config:
+    pack-location: pri.zxx
+    app-name: ${spring.application.name}
+    contact: 15282648585
+    desc: '学习汇总'
+    version: '1.0'
