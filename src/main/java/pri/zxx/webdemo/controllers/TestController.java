@@ -17,6 +17,7 @@ import pri.zxx.webdemo.services.TestService;
 
 import java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Random;
@@ -36,15 +37,18 @@ public class TestController {
 
     @GetMapping(value = "/insert")
     @ApiOperation(value = "测试插入指定数量数据")
-    @ApiImplicitParams(@ApiImplicitParam(name = "count", value = "数量", required = true))
+    @ApiImplicitParams(@ApiImplicitParam(name = "count", value = "数量", required = false))
     public String toInsert(Integer count, SysRole sysRole1) {
         Long st = System.currentTimeMillis();
         SysRole sysRole = null;
+        if (count == null) {
+            return "ok";
+        }
         for (int i = 0; i < count; i++) {
             sysRole = new SysRole();
             sysRole.setRole_name(name[new Random().nextInt(6)]);
             sysRole.setEnabled(new Random().nextInt(2));
-            sysRole.setCreate_time(LocalDateTime.now().minusMonths(Long.valueOf(i)));
+            sysRole.setCreate_time(LocalDateTime.now().minusMonths(Long.valueOf(i)).format(DateTimeFormatter.ISO_DATE));
             sysRole.setCreate_by(Long.valueOf(i));
             testService.insertOne(sysRole);
         }

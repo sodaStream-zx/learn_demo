@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -21,7 +22,7 @@ import java.util.LinkedHashMap;
 public class LogRecordAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogRecordAspect.class);
     private static final String UTF_8 = "utf-8";
-    public final String string = "execution(*  *..*.*.controller..*.*(..))";
+    public final String string = "execution(*  *..*.*.controllers..*.*(..))";
 
     // 定义切点Pointcut
     @Pointcut(value = string)
@@ -41,6 +42,7 @@ public class LogRecordAspect {
     // 通知（环绕）
     @Around("excudeService()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
+        Long startTime = System.currentTimeMillis();
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
         ServletRequestAttributes sra = (ServletRequestAttributes) ra;
         HttpServletRequest request = sra.getRequest();
@@ -54,7 +56,6 @@ public class LogRecordAspect {
         Object result = pjp.proceed();
         long endTime = System.currentTimeMillis();
         try {
-            long startTime = (long) request.getAttribute("startTime");
             //获取请求参数集合并进行遍历拼接
             if (args.length > 0) {
                 if ("POST".equals(method)) {
@@ -63,7 +64,9 @@ public class LogRecordAspect {
                 } else if ("GET".equals(method)) {
                     params = queryString;
                 }
-                params = URLDecoder.decode(params, UTF_8);
+                if (!StringUtils.isEmpty(params)) {
+                    params = URLDecoder.decode(params, UTF_8);
+                }
             }
             LinkedHashMap<String, Object> mp = new LinkedHashMap<>();
             mp.put("请求类型", method);

@@ -2,8 +2,6 @@ package pri.zxx.webdemo.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import java.time.LocalDateTime;
-
 /**
  * @author Twilight
  * @desc
@@ -17,7 +15,7 @@ public class SysRole {
     @ApiModelProperty(name = "enabled", value = "是否启用")
     private Integer enabled;
     @ApiModelProperty(name = "create_time", value = "创建时间", notes = "yyyy-MM-DD")
-    private LocalDateTime create_time;
+    private String create_time;
     @ApiModelProperty(name = "create_by", value = "c创建者", notes = "yyyy-MM-DD")
     private Long create_by;
 
@@ -56,11 +54,11 @@ public class SysRole {
         this.enabled = enabled;
     }
 
-    public LocalDateTime getCreate_time() {
+    public String getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(LocalDateTime create_time) {
+    public void setCreate_time(String create_time) {
         this.create_time = create_time;
     }
 
