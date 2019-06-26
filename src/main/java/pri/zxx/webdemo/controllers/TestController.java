@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.io.FileUtils;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import pri.zxx.webdemo.entity.SysRole;
 import pri.zxx.webdemo.services.TestService;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -76,16 +79,26 @@ public class TestController {
                  * 这里只是简单一个例子,请自行参考，融入到实际中可能需要大家自己做一些思考，比如： 1、文件路径； 2、文件名；
                  * 3、文件格式; 4、文件大小的限制;
                  */
-                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(file.getOriginalFilename())));
-                log.warn(file.getOriginalFilename());
-                out.write(file.getBytes());
-                out.flush();
-                out.close();
+                String path = System.getProperty("user.dir") + "/files/";
+                File picPath = new File(path);
+                if (!picPath.exists()) {
+                    picPath.mkdirs();
+                }
+                File destination = new File(path + file.getOriginalFilename());
+                if (!destination.exists()) {
+                    destination.createNewFile();
+                }
+                log.warn("canWrite :" + destination.canWrite());
+                log.warn("canRead:" + destination.canRead());
+                log.warn("canExecute:" + destination.canExecute());
+                log.warn("path:" + destination.getPath());
+                FileUtils.copyToFile(file.getInputStream(), destination);
+//                file.transferTo(destination);
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                log.error("上传文件异常 {}", e);
                 return "上传失败," + e.getMessage();
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("上传文件异常 {}", e);
                 return "上传失败," + e.getMessage();
             }
             return "上传成功";
