@@ -9,21 +9,30 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.MediaType;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import pri.zxx.webdemo.entity.SysRole;
 import pri.zxx.webdemo.services.TestService;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Twilight
@@ -37,6 +46,9 @@ public class TestController {
     private static String[] name = new String[]{"张三", "李四", "王二", "血不染", "持之不败", "随心不欲"};
     @Autowired
     private TestService testService;
+    private static String[] types = new String[]{"A", "B", "C", "D", "E", "F", "G", "H"};
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @GetMapping(value = "/insert")
     @ApiOperation(value = "测试插入指定数量数据")
@@ -105,5 +117,70 @@ public class TestController {
         } else {
             return "上传失败，因为文件是空的.";
         }
+    }
+
+    @ApiOperation(value = "返回图片")
+    @GetMapping(value = "/one", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    @ResponseBody
+    public byte[] getImage() throws IOException {
+        String path = System.getProperty("user.dir") + "/files/";
+        File file = new File(path + "QQ图片20180927181736.png");
+        FileInputStream inputStream = new FileInputStream(file);
+        byte[] bytes = new byte[inputStream.available()];
+        inputStream.read(bytes, 0, inputStream.available());
+        return bytes;
+    }
+
+    @ApiOperation(value = "返回图片列表")
+    @GetMapping(value = "/many")
+    @ResponseBody
+    public Map<String, String> getImages() throws IOException {
+        String path = System.getProperty("user.dir") + "/files/";
+        File file = new File(path + "辐射4年度版1920x1080壁纸_彼岸图网.jpg");
+        File file2 = new File(path + "夜晚 星星 星空 梦幻 4K壁纸_彼岸图网.jpg");
+        byte[] bytes = FileUtils.readFileToByteArray(file);
+        byte[] bytes2 = FileUtils.readFileToByteArray(file2);
+        String s = Base64Utils.encodeToString(bytes);
+        String s2 = Base64Utils.encodeToString(bytes2);
+        Map<String, String> bufferedImages = new HashMap<>();
+        bufferedImages.put("img", s);
+        bufferedImages.put("img2", s2);
+        return bufferedImages;
+    }
+
+    @ApiOperation(value = "redis测试")
+    @GetMapping(value = "/redis")
+    public void myTest() throws InterruptedException {
+        ThreadPoolExecutor ex = new ThreadPoolExecutor(10, 20, 500, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(1));
+
+        for (int j = 0; j < 50; j++) {
+            for (int i = 0; i < 9; i++) {
+                int finalJ = j;
+                ex.execute(() -> {
+                    for (int k = 0; k < 500; k++) {
+                        int i1 = new Random().nextInt(8);
+                        this.incr(types[i1], finalJ);
+                    }
+                });
+            }
+            int finalJ1 = j;
+            ex.execute(() -> {
+                for (int i = 0; i < 50; i++) {
+                    Map map = this.get(finalJ1);
+                    System.out.println(map);
+                    System.out.println("------------------");
+                }
+            });
+            TimeUnit.SECONDS.sleep(2);
+        }
+    }
+
+    public void incr(String type, Integer num) {
+        redisTemplate.opsForHash().increment(num + "-map", type, 1);
+    }
+
+    public Map get(Integer num) {
+        Map entries = redisTemplate.opsForHash().entries(num + "-map");
+        return entries;
     }
 }

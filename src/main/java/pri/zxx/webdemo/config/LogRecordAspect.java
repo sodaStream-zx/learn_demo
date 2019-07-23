@@ -1,7 +1,6 @@
 package pri.zxx.webdemo.config;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -60,7 +59,7 @@ public class LogRecordAspect {
             if (args.length > 0) {
                 if ("POST".equals(method)) {
                     Object object = args[0];
-                    params = JSON.toJSONString(object, SerializerFeature.WriteMapNullValue);
+                    params = JSON.toJSONString(object);
                 } else if ("GET".equals(method)) {
                     params = queryString;
                 }
@@ -69,11 +68,11 @@ public class LogRecordAspect {
                 }
             }
             LinkedHashMap<String, Object> mp = new LinkedHashMap<>();
-            mp.put("请求类型", method);
             mp.put("请求地址", uri);
             mp.put("请求参数", params);
             mp.put("处理时间", (endTime - startTime) + "ms");
-            logger.warn(JSON.toJSONString(mp, SerializerFeature.PrettyFormat));
+            mp.put("请求类型", method);
+            logger.warn(JSON.toJSONString(mp));
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("log error !!", e);

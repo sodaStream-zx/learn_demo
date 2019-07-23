@@ -8,7 +8,6 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -40,8 +39,9 @@ public class StreamProblemTest {
 
     @Test
     public void test2() {
-        Optional<Integer> count = employees.stream().map((e) -> 1).reduce(Integer::sum);
-        System.out.println(count);
+        employees.stream().limit(5).forEach(System.out::println);
+//        Optional<Integer> count = employees.stream().map((e) -> 1).reduce(Integer::sum);
+//        System.out.println(count);
     }
 
     @Test
