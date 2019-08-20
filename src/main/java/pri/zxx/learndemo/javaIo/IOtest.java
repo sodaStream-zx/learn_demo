@@ -23,6 +23,8 @@ public class IOtest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            System.out.println("文件不存在");
         }
     }
 
