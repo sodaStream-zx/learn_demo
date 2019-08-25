@@ -4,6 +4,7 @@ import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -13,6 +14,7 @@ import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
+@EnableDiscoveryClient
 public class LearnDemoApplication {
 
     @Autowired

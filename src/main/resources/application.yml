@@ -17,6 +17,11 @@ spring:
     multipart:
       max-request-size: '20MB'
       max-file-size: '20MB'
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: 18d6f176-e790-4922-8792-ae985b42fdfd
 msg:
   timeOut: 30
 logging:
