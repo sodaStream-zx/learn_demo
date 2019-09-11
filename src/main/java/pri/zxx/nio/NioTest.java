@@ -1,8 +1,14 @@
 package pri.zxx.nio;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.ByteBuffer;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Twilight
@@ -10,6 +16,8 @@ import java.nio.ByteBuffer;
  * @createTime 2019-06-29-21:16
  */
 public class NioTest {
+    private static final Logger log = LoggerFactory.getLogger(NioTest.class);
+
     @Test
     public void myTest3() {
         //直接缓冲区 在jvm中缓存
@@ -61,5 +69,35 @@ public class NioTest {
         System.out.println("ca:" + btb.capacity());
         System.out.println("limit:" + btb.limit());
         System.out.println("position:" + btb.position());
+    }
+
+    @Test
+    public void myTest4() {
+        //不存在，添加新的 计算今天与下一个月今天的天数 （要么第一次测试，要么过期了）
+        //获取开通时间的天数
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//        String time = dataMapper.getStartVipTime(userId);
+        String time = "2019-06-20 16:30";
+        String now = "2019-07-20 07:30";
+        LocalDateTime startTime = LocalDateTime.parse(time, dateTimeFormatter);
+        LocalDateTime nowMonth = LocalDateTime.parse(now, dateTimeFormatter);
+        //比如 13号 设置超时间为 当前时间到下个月13号
+        int dayOfMonth = startTime.getDayOfMonth();
+//        LocalDateTime nowMonth = LocalDateTime.now();
+        LocalDateTime to;
+        if (nowMonth.getDayOfMonth() <= dayOfMonth) {
+            //不是今天
+            to = LocalDateTime.of(nowMonth.getYear(), nowMonth.getMonth(), dayOfMonth, 23, 59, 59);
+        } else {
+            //当前月份的 下一个月  和 开通vip的时间
+            to = LocalDateTime.of(nowMonth.getYear(), nowMonth.getMonth().plus(1L), dayOfMonth, 23, 59, 59);
+        }
+        Duration between = Duration.between(nowMonth, to);
+        long fireTme = between.toMillis();
+        try {
+            log.warn(1L + " :" + fireTme + " :" + TimeUnit.MILLISECONDS);
+        } catch (Exception e) {
+            log.error("添加测试次数异常 {}", e);
+        }
     }
 }

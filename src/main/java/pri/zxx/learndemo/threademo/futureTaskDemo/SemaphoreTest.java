@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * @createTime 2019-05-10-上午 9:40
  */
 public class SemaphoreTest {
-    Semaphore semaphore = new Semaphore(2);
+    Semaphore semaphore = new Semaphore(1);
 
     public static void main(String[] args) throws InterruptedException {
         SemaphoreTest semaphoreTest = new SemaphoreTest();
@@ -30,9 +30,9 @@ public class SemaphoreTest {
 //        }
         try {
             semaphore.acquire();  //请求占用一个资源
-            System.out.println(Thread.currentThread().getName() + "资源正在被使用");
+            System.out.println("1.资源正在被" + Thread.currentThread().getName() + "使用");
             Thread.sleep(2000);//放大资源占用时间，便于观察
-            System.out.println(Thread.currentThread().getName() + "释放资源");
+            System.out.println("2." + Thread.currentThread().getName() + "释放资源");
             semaphore.release();//释放一个资源
         } catch (InterruptedException e) {
             e.printStackTrace();
