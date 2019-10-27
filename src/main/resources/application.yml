@@ -5,7 +5,7 @@ spring:
     name: zxx-learn-demo
   redis:
     host: localhost
-    #    host: 47.94.208.1
+    #    host: 62.234.211.179
     port: 6379
   datasource:
     url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true

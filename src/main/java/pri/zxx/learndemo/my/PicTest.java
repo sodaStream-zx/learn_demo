@@ -28,7 +28,7 @@ import static org.apache.catalina.manager.Constants.CHARSET;
  * @createTime 2019-06-19-下午 2:03
  */
 public class PicTest {
-    /*
+    /**
      * overlapImage
      * @description：合成二维码和图片为文件
      * @author 李阳
@@ -57,7 +57,7 @@ public class PicTest {
         }
     }
 
-    /*
+    /**
      * combineCodeAndPicToInputstream
      * @description：合成二维码和图片为输出流，可用于下载或直接展示
      * @author 李阳
@@ -74,10 +74,12 @@ public class PicTest {
 
             //二维码或小图在大图的左上角坐标
             int x = (big.getWidth() - small.getWidth()) / 2;
-            int y = (big.getHeight() - small.getHeight() - 100);   //二维码距大图下边距100
+            //二维码距大图下边距100
+            int y = (big.getHeight() - small.getHeight() - 100);
             g.drawImage(small, x, y, small.getWidth(), small.getHeight(), null);
             g.dispose();
-            resp.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("lia阿里.png", "UTF-8"));//去掉这行设置header的代码，前端访问可以直接展示
+            //去掉这行设置header的代码，前端访问可以直接展示
+            resp.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("lia阿里.png", "UTF-8"));
             //为了保证大图背景不变色，formatName必须为"png"
             ImageIO.write(big, "png", resp.getOutputStream());
         } catch (Exception e) {
@@ -85,7 +87,7 @@ public class PicTest {
         }
     }
 
-    /*
+    /**
      * combineCodeAndPicToBase64
      * @description：合成二维码和图片为Base64，同样可用于直接展示
      * @author 李阳
@@ -125,19 +127,22 @@ public class PicTest {
         return null;
     }
 
-    /*
+
+    /**
      * createImage
+     *
+     * @return java.awt.image.BufferedImage
      * @description：生成二维码
      * @author 李阳
      * @date 2018/12/13
      * @params [content 二维码内容, logoImgPath 中间logo, needCompress 是否压缩]
-     * @return java.awt.image.BufferedImage
      */
     private static BufferedImage createImage(String content, String logoImgPath, boolean needCompress) throws IOException, WriterException {
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
         hints.put(EncodeHintType.CHARACTER_SET, CHARSET);
         hints.put(EncodeHintType.MARGIN, 1);
+        /*------------------ start-------------------*/
         //200是定义的二维码或小图片的大小
         BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, 200, 200, hints);
         int width = bitMatrix.getWidth();
@@ -159,7 +164,7 @@ public class PicTest {
         return image;
     }
 
-    /*
+    /**
      * insertImage
      * @description：二维码插入logo
      * @author 李阳
