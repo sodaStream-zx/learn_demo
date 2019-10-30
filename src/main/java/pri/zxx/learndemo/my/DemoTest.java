@@ -33,8 +33,8 @@ public class DemoTest {
     public void myTest() {
         Long max = 1000000000L;
         Long st = System.currentTimeMillis();
-        this.addToMany(max);
-//        addOneByOne(max);
+//        this.addToMany(max);
+        addOneByOne(max);
         System.out.println("cost:" + (System.currentTimeMillis() - st));
 //        System.out.println(Long.MAX_VALUE);
     }
