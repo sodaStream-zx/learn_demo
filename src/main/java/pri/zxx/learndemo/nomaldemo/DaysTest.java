@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @desc
  * @createTime 2019-03-25-下午 3:06
  */
-public class Days {
+public class DaysTest {
     @Test
     public void getDay() {
         System.out.println(LocalDate.now().getDayOfMonth());
