@@ -11,7 +11,7 @@ public class Badsyn {
 
     public static synchronized void synMethod() {
         try {
-            TimeUnit.HOURS.sleep(1);
+            TimeUnit.SECONDS.sleep(15);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

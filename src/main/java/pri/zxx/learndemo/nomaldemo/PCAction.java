@@ -4,13 +4,16 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class PCAction {
+/**
+ * @author Twilight
+ */
+public class PcAction {
 
     public static void load() throws IOException {
-        String strurl = "https://baijiahao.baidu.com/s?id=1589546094825996322&wfr=spider&for=pc";
+        String strUrl = "https://baijiahao.baidu.com/s?id=1589546094825996322&wfr=spider&for=pc";
         byte[] cons = new byte[0];
         try {
-            URL url = new URL(strurl);
+            URL url = new URL(strUrl);
             URLConnection conn = url.openConnection();
             InputStream is = conn.getInputStream();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -35,6 +38,6 @@ public class PCAction {
     }
 
     public static void main(String[] args) throws IOException {
-        PCAction.load();
+        PcAction.load();
     }
 }

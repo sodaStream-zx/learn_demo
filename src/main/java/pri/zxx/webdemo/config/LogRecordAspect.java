@@ -3,7 +3,10 @@ package pri.zxx.webdemo.config;
 import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -28,15 +31,15 @@ public class LogRecordAspect {
     public void excudeService() {
     }
 
-    //执行切点 之前
-    @Before("excudeService()")
-    public void exBefore(JoinPoint pjp) {
-        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
-        ServletRequestAttributes sra = (ServletRequestAttributes) ra;
-        HttpServletRequest request = sra.getRequest();
-        Long startTime = System.currentTimeMillis();
-        request.setAttribute("startTime", startTime);
-    }
+//    //执行切点 之前
+//    @Before("excudeService()")
+//    public void exBefore(JoinPoint pjp) {
+//        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+//        ServletRequestAttributes sra = (ServletRequestAttributes) ra;
+//        HttpServletRequest request = sra.getRequest();
+//        Long startTime = System.currentTimeMillis();
+//        request.setAttribute("startTime", startTime);
+//    }
 
     // 通知（环绕）
     @Around("excudeService()")
@@ -75,7 +78,7 @@ public class LogRecordAspect {
             logger.warn(JSON.toJSONString(mp));
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("log error !!", e);
+            logger.error("log error !! {}", e);
         }
         return result;
     }
