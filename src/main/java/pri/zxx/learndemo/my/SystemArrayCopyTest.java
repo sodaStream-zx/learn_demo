@@ -6,7 +6,7 @@ package pri.zxx.learndemo.my;
  * @createTime 2019-11-08-17:06
  */
 public class SystemArrayCopyTest {
-    public static void main(String[] args) {
+    public static void systemArrCp() {
         //定义需要删除的位置
         int index = 4;
         //定义数组
@@ -23,5 +23,9 @@ public class SystemArrayCopyTest {
         for (int i = 0; i < intArr.length; i++) {
             System.out.println(intArr[i]);
         }
+    }
+
+    public static void main(String[] args) {
+        systemArrCp();
     }
 }
