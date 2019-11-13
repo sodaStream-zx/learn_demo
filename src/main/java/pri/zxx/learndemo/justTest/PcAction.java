@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.nomaldemo;
+package pri.zxx.learndemo.justTest;
 
 import java.io.*;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.trancs;
+package pri.zxx.learndemo.transction;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

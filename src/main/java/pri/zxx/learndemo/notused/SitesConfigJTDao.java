@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.noused;/*
+package pri.zxx.learndemo.notused;/*
 package noused;
 
 import commoncore.entity.configEntity.SiteConfig;

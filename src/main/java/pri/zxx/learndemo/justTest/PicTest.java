@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.my;
+package pri.zxx.learndemo.justTest;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
