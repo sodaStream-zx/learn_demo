@@ -24,5 +24,6 @@ public class ReadFileTest {
         byte[] bytes = IOUtils.toByteArray(inputStream);
         System.out.println(new String(bytes, StandardCharsets.UTF_8));
         inputStream.close();
+
     }
 }
