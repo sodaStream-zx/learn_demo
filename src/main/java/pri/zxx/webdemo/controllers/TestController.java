@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -126,8 +127,8 @@ public class TestController {
         String path = System.getProperty("user.dir") + "/files/";
         File file = new File(path + "QQ图片20180927181736.png");
         FileInputStream inputStream = new FileInputStream(file);
-        byte[] bytes = new byte[inputStream.available()];
-        inputStream.read(bytes, 0, inputStream.available());
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+        inputStream.close();
         return bytes;
     }
 
