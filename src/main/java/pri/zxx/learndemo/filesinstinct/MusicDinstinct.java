@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.filedinstinct;
+package pri.zxx.learndemo.filesinstinct;
 
 import java.io.File;
 import java.util.ArrayList;

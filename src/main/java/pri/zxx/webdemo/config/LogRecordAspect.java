@@ -3,10 +3,11 @@ package pri.zxx.webdemo.config;
 import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -16,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 
-@Aspect
-@Component//定义一个切面
+//@Aspect
+//@Component//定义一个切面
 public class LogRecordAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogRecordAspect.class);
     private static final String UTF_8 = "utf-8";
@@ -28,15 +29,15 @@ public class LogRecordAspect {
     public void excudeService() {
     }
 
-    //执行切点 之前
-    @Before("excudeService()")
-    public void exBefore(JoinPoint pjp) {
-        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
-        ServletRequestAttributes sra = (ServletRequestAttributes) ra;
-        HttpServletRequest request = sra.getRequest();
-        Long startTime = System.currentTimeMillis();
-        request.setAttribute("startTime", startTime);
-    }
+//    //执行切点 之前
+//    @Before("excudeService()")
+//    public void exBefore(JoinPoint pjp) {
+//        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+//        ServletRequestAttributes sra = (ServletRequestAttributes) ra;
+//        HttpServletRequest request = sra.getRequest();
+//        Long startTime = System.currentTimeMillis();
+//        request.setAttribute("startTime", startTime);
+//    }
 
     // 通知（环绕）
     @Around("excudeService()")
@@ -75,7 +76,7 @@ public class LogRecordAspect {
             logger.warn(JSON.toJSONString(mp));
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("log error !!", e);
+            logger.error("log error !! {}", e);
         }
         return result;
     }

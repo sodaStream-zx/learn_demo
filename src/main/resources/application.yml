@@ -8,11 +8,12 @@ spring:
     #    host: 62.234.211.179
     port: 6379
   datasource:
-    url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true
-    username: root
-    password: zxx1994
+    #    url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://10.253.50.250:3306/yunce?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: zzyq
+    password: 1qaz2WSX!@
     driver-class-name: com.mysql.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
+    type:  com.alibaba.druid.pool.DruidDataSource
   servlet:
     multipart:
       max-request-size: '20MB'
@@ -20,7 +21,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 10.253.50.31:8848
         namespace: 18d6f176-e790-4922-8792-ae985b42fdfd
 msg:
   timeOut: 30
@@ -30,7 +31,7 @@ logging:
   #  pattern:
   #    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
   #    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{10} - %m%n'
-  level.pri.zxx.webdemo.mappers: debug
+  level.pri.zxx.webdemo.mappers: warn
 swagger:
   config:
     pack-location: pri.zxx

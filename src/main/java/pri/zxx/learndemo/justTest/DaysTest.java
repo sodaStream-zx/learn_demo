@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.nomaldemo;
+package pri.zxx.learndemo.justTest;
 
 import org.junit.Test;
 

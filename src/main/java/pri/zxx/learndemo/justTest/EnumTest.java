@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.my;
+package pri.zxx.learndemo.justTest;
 
 /**
  * @author Twilight
