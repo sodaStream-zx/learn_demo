@@ -7,7 +7,7 @@ import java.net.URLConnection;
 /**
  * @author Twilight
  */
-public class PcAction {
+public class PCAction {
 
     public static void load() throws IOException {
         String strUrl = "https://baijiahao.baidu.com/s?id=1589546094825996322&wfr=spider&for=pc";
@@ -38,6 +38,6 @@ public class PcAction {
     }
 
     public static void main(String[] args) throws IOException {
-        PcAction.load();
+        PCAction.load();
     }
 }
