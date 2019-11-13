@@ -5,11 +5,9 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 
-@Aspect
-@Component//定义一个切面
+//@Aspect
+//@Component//定义一个切面
 public class LogRecordAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogRecordAspect.class);
     private static final String UTF_8 = "utf-8";

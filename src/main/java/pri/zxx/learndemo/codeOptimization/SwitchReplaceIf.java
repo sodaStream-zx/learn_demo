@@ -6,11 +6,6 @@ package pri.zxx.learndemo.codeOptimization;
  * @createTime 2019-11-05-下午 2:43
  */
 public class SwitchReplaceIf {
-    public static void main(String[] args) {
-        SwitchReplaceIf switchReplaceIf = new SwitchReplaceIf();
-        switchReplaceIf.myTest("a");
-    }
-
     public void myTest(String condition) {
         switch (condition) {
             case "a":
@@ -29,5 +24,10 @@ public class SwitchReplaceIf {
                 System.out.println("default");
                 break;
         }
+    }
+
+    public static void main(String[] args) {
+        SwitchReplaceIf switchReplaceIf = new SwitchReplaceIf();
+        switchReplaceIf.myTest("a");
     }
 }
