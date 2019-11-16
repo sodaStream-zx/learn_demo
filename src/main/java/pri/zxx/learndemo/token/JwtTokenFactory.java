@@ -24,7 +24,7 @@ import java.util.Map;
 @Component
 public class JwtTokenFactory {
 
-    public static String signingKey = "yunce";
+    public static String signingKey = "test";
     private static Logger log = LoggerFactory.getLogger(JwtTokenFactory.class);
 
     /**

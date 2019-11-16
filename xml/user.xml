@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users uid="usersNode">
+
+    <user id="1">
+        <name>zxx1</name>
+        <age>12</age>
+        <sex>男</sex>
+    </user>
+
+    <user id="2">
+        <name>zxx2</name>
+        <age>11</age>
+        <sex>男</sex>
+    </user>
+
+    <user id="3">
+        <name>zxx3</name>
+        <age>13</age>
+        <sex>男</sex>
+    </user>
+
+    <user id="4">
+        <name>zxx4</name>
+        <age>14</age>
+        <sex>男</sex>
+    </user>
+</users>
