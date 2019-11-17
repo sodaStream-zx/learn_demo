@@ -10,7 +10,7 @@ public class DomPares {
     public static void printAttrs(Node node) {
         NamedNodeMap attrs = node.getAttributes();
         for (int i = 0; i < attrs.getLength(); i++) {
-            Node currentnode = (Node) attrs.item(i);
+            Node currentnode = attrs.item(i);
             System.out.print(" " + currentnode.getNodeName() + " = " + currentnode.getNodeValue() + "");
         }
         System.out.println("");
