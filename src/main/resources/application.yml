@@ -27,6 +27,7 @@ spring:
         #        server-addr: 10.253.50.31:8848
         namespace: 18d6f176-e790-4922-8792-ae985b42fdfd
 msg:
+  #消息处理超时时间s
   timeOut: 30
 logging:
   file: logs/log.log
