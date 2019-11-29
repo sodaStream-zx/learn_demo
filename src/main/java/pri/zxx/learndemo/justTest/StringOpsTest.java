@@ -14,11 +14,11 @@ public class StringOpsTest {
     public static List<String> replace(String sentence) {
         long st = System.currentTimeMillis();
         String s1 = sentence.replaceAll("\\.", ".<p>");
-        String s2 = s1.replaceAll("\\。", "。<p>");
-        String s3 = s2.replaceAll("\\？", "？<p>");
+        String s2 = s1.replaceAll("。", "。<p>");
+        String s3 = s2.replaceAll("？", "？<p>");
         String s4 = s3.replaceAll("\\?", "?<p>");
-        String s6 = s4.replaceAll("\\!", "!<p>");
-        String s7 = s6.replaceAll("\\！", "！<p>");
+        String s6 = s4.replaceAll("!", "!<p>");
+        String s7 = s6.replaceAll("！", "！<p>");
         String[] split = s7.split("<p>");
         System.out.println("cost Time :" + (System.currentTimeMillis() - st) + " ms ");
         return Arrays.asList(split);

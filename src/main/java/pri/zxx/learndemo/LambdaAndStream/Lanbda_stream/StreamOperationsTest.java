@@ -1,11 +1,12 @@
 package pri.zxx.learndemo.LambdaAndStream.Lanbda_stream;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
  * @createTime 2019-01-13-20:31
  */
 public class StreamOperationsTest {
-    private final Logger log = Logger.getLogger(StreamOperationsTest.class.getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     private List<Employee> employees = Arrays.asList(
             new Employee("ZHANSAN ", 18, 1000.0, Employee.Status.FREE),
             new Employee("LISI ", 26, 6000.0, Employee.Status.VOCATION),
@@ -46,7 +47,7 @@ public class StreamOperationsTest {
     public void createTest() {
         //1.collections  default method stream,paralluelstream
         List<Integer> myList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        myList.stream().forEach(System.out::print);
+        myList.forEach(System.out::print);
         System.out.println("-------------------");
         myList.stream().filter(s -> s > 3).peek(System.out::print).forEach(System.out::print);
         System.out.println("-----------------");
@@ -89,7 +90,7 @@ public class StreamOperationsTest {
     @Test
     public void mapOpe() {
         log.info("stream 映射操作-----------------");
-        list.stream().map((str) -> str.toUpperCase()).forEach(System.out::println);
+        list.stream().map(String::toUpperCase).forEach(System.out::println);
         log.info("获取emp name ----------------");
         employees.stream().map(Employee::getName).forEach(System.out::println);
         log.info("字符串流转字符流 嵌套流 ----------------");
@@ -123,7 +124,7 @@ public class StreamOperationsTest {
      **/
     @Test
     public void stopOpe() {
-        log.info("stream 终止操作-----------------");
+        log.info("------------stream 终止操作-----------------");
         boolean allMatch = employees.stream().allMatch((s) -> s.getStatus().equals(Employee.Status.BUSY));
         log.info("匹配所有 : " + allMatch);
         boolean anyMatch = employees.stream().anyMatch((s) -> s.getStatus().equals(Employee.Status.BUSY));
@@ -132,12 +133,12 @@ public class StreamOperationsTest {
         log.info("没有匹配 : " + noneMath);
         //Optional 容器类
         Optional<Employee> first = employees.stream().sorted(Comparator.comparingDouble(Employee::getSalary)).findFirst();
-        log.info("返回第一个 : " + first.get().toString());
-        long totalNum = employees.stream().count();
+        log.info("返回第一个{}", first.orElseGet(Employee::new).toString());
+        long totalNum = employees.size();
         log.info("返回数量 : " + totalNum);
         Optional<Double> max = employees.stream().map(Employee::getSalary).max(Double::compare);
         Optional<Double> min = employees.stream().map(Employee::getSalary).min(Double::compare);
-        log.info("返回saray max/min : " + max.get() + "/" + min.get());
+        log.info("返回sanry max/min : " + max.orElse(0.0) + "/" + min.orElse(0.0));
 
     }
 
@@ -150,10 +151,10 @@ public class StreamOperationsTest {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
 
         log.info("--------reduce(ope)---------");
-        int sum = list.stream().reduce(0, (x, y) -> x + y);
+        int sum = list.stream().reduce(0, Integer::sum);
         log.info("reduce(seed,ope) with seeds : " + sum);
-        OptionalDouble total = employees.stream().mapToDouble(Employee::getSalary).reduce((x, y) -> x + y);
-        log.info("reduce(ope) total no seeds : " + total.getAsDouble());
+        OptionalDouble total = employees.stream().mapToDouble(Employee::getSalary).reduce(Double::sum);
+        log.info("reduce(ope) total no seeds : " + total.orElse(0.0));
 
         log.info("---------- collector 收集器---------");
         log.info("---------- collector.toList---------");
@@ -162,7 +163,7 @@ public class StreamOperationsTest {
         employees.stream().map(Employee::getName).collect(Collectors.toSet()).forEach(System.out::println);
         log.info("---------- collector.toCollection(LinkedHashMap)---------");
         employees.stream().map(Employee::getName).collect(Collectors.toCollection(LinkedHashSet::new)).forEach(System.out::println);
-        Long totalNum = employees.stream().map(Employee::getName).collect(Collectors.counting());
+        long totalNum = employees.stream().map(Employee::getName).count();
         log.info("---------- collector.counting() = " + totalNum + "---------");
         //averaging* 平均值
         //Summing* 总和
@@ -186,12 +187,4 @@ public class StreamOperationsTest {
         }
     }
 
-    /*public  void main(String[] args) {
-        //StreamOperationsTest.createTest();
-        //StreamOperationsTest.filterOpe();
-        //StreamOperationsTest.mapOpe();
-        //StreamOperationsTest.sortOpe();
-//        StreamOperationsTest.stopOpe();
-        StreamOperationsTest.reduceOpe();
-    }*/
 }

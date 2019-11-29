@@ -4,7 +4,6 @@ import org.junit.Test;
 import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -39,12 +38,7 @@ public class LambdaDemoTest {
     public void test() {
         //jdk 1.7 以前，必须为final
         final int num = 1;
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("no lambda" + num);
-            }
-        };
+        Runnable runnable = () -> System.out.println("no lambda" + num);
         runnable.run();
         Runnable r2 = () -> System.out.println("hello lambda" + num);
         r2.run();
@@ -52,12 +46,7 @@ public class LambdaDemoTest {
 
     @Test
     public void test2() {
-        Consumer<String> con = new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                System.out.println("s=" + s);
-            }
-        };
+        Consumer<String> con = s -> System.out.println("s=" + s);
         Consumer<String> con2 = (x) -> System.out.println("x=" + x);
         con.accept("hello1");
         con2.accept("hello");
@@ -71,7 +60,7 @@ public class LambdaDemoTest {
                 new Employee("WANGWU ", 38, 2000.0),
                 new Employee("WANGER ", 54, 5000.0)
         );
-        Collections.sort(employees, (o1, o2) -> {
+        employees.sort((o1, o2) -> {
             if (o1.getAge() == o2.getAge()) {
                 return o1.getName().compareTo(o2.getName());
             } else {

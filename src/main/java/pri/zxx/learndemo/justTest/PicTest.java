@@ -30,25 +30,25 @@ import static org.apache.catalina.manager.Constants.CHARSET;
 public class PicTest {
     /**
      * overlapImage
-     * @description：合成二维码和图片为文件
+     *
+     * @return void
+     * @description:合成二维码和图片为文件
      * @author 李阳
      * @date 2018/12/13
      * @params [backPicPath, code]
-     * @return void
      */
     public static final void combineCodeAndPicToFile(String backPicPath, BufferedImage code) {
         try {
             BufferedImage big = ImageIO.read(new File(backPicPath));
-            BufferedImage small = code;
-        /*//合成两个文件时使用
+            /*//合成两个文件时使用
         BufferedImage small = ImageIO.read(new File(fillPicPath));*/
             Graphics2D g = big.createGraphics();
 
             //二维码或小图在大图的左上角坐标
-            int x = (big.getWidth() - small.getWidth()) / 2;
+            int x = (big.getWidth() - code.getWidth()) / 2;
             // int y = (big.getHeight() - small.getHeight()) / 2;
-            int y = (big.getHeight() - small.getHeight() - 60);
-            g.drawImage(small, x, y, small.getWidth(), small.getHeight(), null);
+            int y = (big.getHeight() - code.getHeight() - 60);
+            g.drawImage(code, x, y, code.getWidth(), code.getHeight(), null);
             g.dispose();
             //为了保证大图背景不变色，formatName必须为"png"
             ImageIO.write(big, "png", new File(System.getProperty("user.dir") + "/combinePic.jpg"));
@@ -59,24 +59,24 @@ public class PicTest {
 
     /**
      * combineCodeAndPicToInputstream
+     *
+     * @return java.io.InputStream
      * @description：合成二维码和图片为输出流，可用于下载或直接展示
      * @author 李阳
      * @date 2018/12/13
      * @params [backPicPath, code]
-     * @return java.io.InputStream
      */
     public static final void combineCodeAndPicToInputstream(String backPicPath, BufferedImage code, HttpServletResponse resp) {
         try {
             BufferedImage big = ImageIO.read(new File(backPicPath));
             // BufferedImage small = ImageIO.read(new File(fillPicPath));
-            BufferedImage small = code;
             Graphics2D g = big.createGraphics();
 
             //二维码或小图在大图的左上角坐标
-            int x = (big.getWidth() - small.getWidth()) / 2;
+            int x = (big.getWidth() - code.getWidth()) / 2;
             //二维码距大图下边距100
-            int y = (big.getHeight() - small.getHeight() - 100);
-            g.drawImage(small, x, y, small.getWidth(), small.getHeight(), null);
+            int y = (big.getHeight() - code.getHeight() - 100);
+            g.drawImage(code, x, y, code.getWidth(), code.getHeight(), null);
             g.dispose();
             //去掉这行设置header的代码，前端访问可以直接展示
             resp.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("lia阿里.png", "UTF-8"));
@@ -89,24 +89,24 @@ public class PicTest {
 
     /**
      * combineCodeAndPicToBase64
+     *
+     * @return java.lang.String
      * @description：合成二维码和图片为Base64，同样可用于直接展示
      * @author 李阳
      * @date 2018/12/14
      * @params [backPicPath, code]
-     * @return java.lang.String
      */
-    public static final String combineCodeAndPicToBase64(String backPicPath, BufferedImage code) {
+    public static String combineCodeAndPicToBase64(String backPicPath, BufferedImage code) {
         ImageOutputStream imOut = null;
         try {
             BufferedImage big = ImageIO.read(new File(backPicPath));
             // BufferedImage small = ImageIO.read(new File(fillPicPath));
-            BufferedImage small = code;
             Graphics2D g = big.createGraphics();
 
             //二维码或小图在大图的左上角坐标
-            int x = (big.getWidth() - small.getWidth()) / 2;
-            int y = (big.getHeight() - small.getHeight() - 100);
-            g.drawImage(small, x, y, small.getWidth(), small.getHeight(), null);
+            int x = (big.getWidth() - code.getWidth()) / 2;
+            int y = (big.getHeight() - code.getHeight() - 100);
+            g.drawImage(code, x, y, code.getWidth(), code.getHeight(), null);
             g.dispose();
             //为了保证大图背景不变色，formatName必须为"png"
 
@@ -124,7 +124,7 @@ public class PicTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return "";
     }
 
 
@@ -166,18 +166,18 @@ public class PicTest {
 
     /**
      * insertImage
+     *
+     * @return void
      * @description：二维码插入logo
      * @author 李阳
      * @date 2018/12/13
      * @params [source, logoImgPath, needCompress]
-     * @return void
      */
     private static void insertImage(BufferedImage source, String logoImgPath, boolean needCompress) throws IOException {
         File file = new File(logoImgPath);
         if (!file.exists()) {
             return;
         }
-
         Image src = ImageIO.read(new File(logoImgPath));
         int width = src.getWidth(null);
         int height = src.getHeight(null);
@@ -186,11 +186,9 @@ public class PicTest {
             if (width > WIDTH) {
                 width = WIDTH;
             }
-
             if (height > HEIGHT) {
                 height = HEIGHT;
             }
-
             Image image = src.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics gMaker = tag.getGraphics();
@@ -198,7 +196,6 @@ public class PicTest {
             gMaker.dispose();
             src = image;
         }
-
         // 在中心位置插入logo
         Graphics2D graph = source.createGraphics();
         int x = (200 - width) / 2;

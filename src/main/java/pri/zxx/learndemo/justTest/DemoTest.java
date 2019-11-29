@@ -12,8 +12,7 @@ public class DemoTest {
      * 这就是为啥算法很重要
      */
     public void addToMany(Long max) {
-        Long sum = 0L;
-        sum = (max + 1) * (max / 2);
+        long sum = (max + 1) * (max / 2);
         System.out.println(sum);
     }
 
@@ -21,7 +20,7 @@ public class DemoTest {
      * 这个为啥会慢
      */
     public void addOneByOne(Long max) {
-        Long sum = 0L;
+        long sum = 0L;
         for (int i = 0; i <= max; i++) {
             sum += i;
             i++;
@@ -32,7 +31,7 @@ public class DemoTest {
     @Test
     public void myTest() {
         Long max = 1000000000L;
-        Long st = System.currentTimeMillis();
+        long st = System.currentTimeMillis();
         this.addToMany(max);
 //        addOneByOne(max);
         System.out.println("cost:" + (System.currentTimeMillis() - st));

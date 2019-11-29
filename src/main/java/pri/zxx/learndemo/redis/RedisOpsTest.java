@@ -33,7 +33,7 @@ public class RedisOpsTest {
         String key = "*-dataMap";
         Set keys = redisTemplate.keys(key);
         System.out.println("sieze:" + keys.size());
-        keys.stream().forEach(k -> redisTemplate.delete(k));
+        keys.forEach(k -> redisTemplate.delete(k));
     }
 
     @Test
@@ -47,6 +47,7 @@ public class RedisOpsTest {
             redisTemplate.opsForValue().set("pro" + i, UUID.randomUUID().toString());
         }
         Set keys = redisTemplate.keys("test*");
+        assert keys != null;
         System.out.println("size:" + keys.size());
     }
 
@@ -61,7 +62,7 @@ public class RedisOpsTest {
         System.out.println("leng:" + testList);
         System.out.println("--------");
         List<String> list = lo.range(0, -1);
-        list.stream().forEach(System.out::println);
+        list.forEach(System.out::println);
 
     }
 
@@ -81,7 +82,7 @@ public class RedisOpsTest {
 
         log.warn("获取vip定时任务进度条-------");
         Optional<String> index = this.getVipProgress(17L);
-        log.warn("index = " + (index.isPresent() ? index.get() : "Nothing"));
+        log.warn("index = {}", index.orElse("Nothing"));
 
         log.warn("删除vip进度条-------");
         Optional<List<String>> strings = this.deleteVipProgress(18L);

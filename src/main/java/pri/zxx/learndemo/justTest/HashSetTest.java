@@ -3,7 +3,7 @@ package pri.zxx.learndemo.justTest;
 import java.util.HashSet;
 
 /**
- * @author Administrator
+ * @author zxx
  * @desc
  * @createTime 2019-08-22-上午 10:48
  */
@@ -15,8 +15,8 @@ public class HashSetTest {
         se.add("3");
         se.add("4");
         se.add("5");
-        Long ob = new Long(1);
-        boolean contains = se.contains(ob.toString());
+        long ob = 1L;
+        boolean contains = se.contains(Long.toString(ob));
         System.out.println(contains);
     }
 }

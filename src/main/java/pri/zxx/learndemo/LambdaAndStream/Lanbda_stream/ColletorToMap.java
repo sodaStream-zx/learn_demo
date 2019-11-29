@@ -41,15 +41,15 @@ public class ColletorToMap {
     public void Colletor() {
         String list = "name:zxx,age:13,addr:china,sex:男,love:sleep";
         String[] keyValue = list.split(",");
-        Arrays.asList(keyValue).stream()
+        Arrays.stream(keyValue)
                 .flatMap(x -> Stream.of(x.split(":")))
                 .forEach(System.out::println);
         System.out.println("-----------------");
-        Arrays.asList(keyValue).stream()
+        Arrays.stream(keyValue)
                 .map(x -> x.replace(":", ""))
                 .forEach(System.out::println);
         System.out.println("-----------------");
-        String str = Stream.of(keyValue).reduce((s1, s2) -> s1.concat(s2)).get();
+        String str = Stream.of(keyValue).reduce(String::concat).get();
         System.out.println(str);
         System.out.println("-----------------");
         Stream.of(list.split(","))
