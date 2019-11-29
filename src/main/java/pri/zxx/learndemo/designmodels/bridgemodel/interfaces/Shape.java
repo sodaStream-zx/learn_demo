@@ -8,9 +8,6 @@ public abstract class Shape {
     public Shape() {
 
     }
-
-    ;
-
     public Shape(String name) {
         this.name = name;
     }

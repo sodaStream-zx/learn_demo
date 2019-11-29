@@ -34,7 +34,7 @@ public class CharsetDetector {
     private static final int CHUNK_SIZE = 2000;
 
     private static Pattern metaPattern = Pattern.compile(
-            "<meta\\s+([^>]*http-equiv=(\"|')?content-type(\"|')?[^>]*)>",
+            "<meta\\s+([^>]*http-equiv=([\"'])?content-type([\"'])?[^>]*)>",
             Pattern.CASE_INSENSITIVE);
     private static Pattern charsetPattern = Pattern.compile(
             "charset=\\s*([a-z][_\\-0-9a-z]*)", Pattern.CASE_INSENSITIVE);
@@ -46,7 +46,7 @@ public class CharsetDetector {
     private static String guessEncodingByNutch(byte[] content) {
         int length = Math.min(content.length, CHUNK_SIZE);
 
-        String str = "";
+        String str;
         str = new String(content, StandardCharsets.US_ASCII);
 
         Matcher metaMatcher = metaPattern.matcher(str);
@@ -54,13 +54,13 @@ public class CharsetDetector {
         if (metaMatcher.find()) {
             Matcher charsetMatcher = charsetPattern.matcher(metaMatcher.group(1));
             if (charsetMatcher.find()) {
-                encoding = new String(charsetMatcher.group(1));
+                encoding = charsetMatcher.group(1);
             }
         }
         if (encoding == null) {
             metaMatcher = charsetPatternHTML5.matcher(str);
             if (metaMatcher.find()) {
-                encoding = new String(metaMatcher.group(1));
+                encoding = metaMatcher.group(1);
             }
         }
         if (encoding == null) {

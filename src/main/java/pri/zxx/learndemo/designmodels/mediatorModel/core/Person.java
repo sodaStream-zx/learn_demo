@@ -1,12 +1,6 @@
 package pri.zxx.learndemo.designmodels.mediatorModel.core;
 
 /**
- * @author 一杯咖啡
- * @desc
- * @createTime 2018-12-24-20:23
- */
-
-/**
  * desc:
  *
  * @Return:

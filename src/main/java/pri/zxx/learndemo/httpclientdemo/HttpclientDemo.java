@@ -48,7 +48,7 @@ public class HttpclientDemo {
             log.info("响应状态栏：：\n" + response.getStatusLine() + ";");
             log.info("编码：：\n" + coding + ";");
             log.info("content lenght：：\n" + content.length + ";");
-            log.info("content ：：\n" + content + ";");
+            log.info("content ：：\n" + html + ";");
             log.info("html = " + html);
             log.info("httpget = " + httpGet.getConfig().toString());
         } catch (IOException e) {

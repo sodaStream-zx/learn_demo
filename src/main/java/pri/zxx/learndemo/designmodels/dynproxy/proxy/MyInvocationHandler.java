@@ -19,7 +19,6 @@ public class MyInvocationHandler<T> implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("代理对象执行：" + method.getName());
-        Object invoke = method.invoke(moveable, args);
-        return invoke;
+        return method.invoke(moveable, args);
     }
 }

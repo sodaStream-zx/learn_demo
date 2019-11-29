@@ -4,8 +4,6 @@ import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 
 import java.util.LinkedHashMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Twilight
@@ -80,7 +78,7 @@ public class Localtions {
         String[] split = msg.split("\\s+");
         Assert.assertTrue("输入参数有误", (split.length == 4 || split.length == 7));
         signalData.putIfAbsent(id, msg);
-        Integer len = split.length;
+        int len = split.length;
         if (id == 0 && len == 4) {
             //第一条消息，直接放进去
             local.putIfAbsent(id, msg.replaceAll("\\s+", ","));
@@ -95,22 +93,21 @@ public class Localtions {
         String[] split = msg.split("\\s+");
         String pre = this.getTocheck(id - 1);
         if (split.length == 7) {
-            Integer x = Integer.valueOf(split[1]) + Integer.valueOf(split[4]);
-            Integer y = Integer.valueOf(split[2]) + Integer.valueOf(split[5]);
-            Integer z = Integer.valueOf(split[3]) + Integer.valueOf(split[6]);
+            int x = Integer.parseInt(split[1]) + Integer.parseInt(split[4]);
+            int y = Integer.parseInt(split[2]) + Integer.parseInt(split[5]);
+            int z = Integer.parseInt(split[3]) + Integer.parseInt(split[6]);
             if (pre.equals("NA,NA,NA")) {
                 return "NA,NA,NA";
             }
             String[] preLocal = pre.split(",");
-            if (Integer.valueOf(preLocal[1]) != Integer.valueOf(split[1]) ||
-                    Integer.valueOf(preLocal[2]) != Integer.valueOf(split[2]) ||
-                    Integer.valueOf(preLocal[3]) != Integer.valueOf(split[3])) {
+            if (!Integer.valueOf(preLocal[1]).equals(Integer.valueOf(split[1])) ||
+                    !Integer.valueOf(preLocal[2]).equals(Integer.valueOf(split[2])) ||
+                    !Integer.valueOf(preLocal[3]).equals(Integer.valueOf(split[3]))) {
                 return "NA,NA,NA";
             }
-            String next = split[0] + "," + x + "," + y + "," + z;
-            return next;
+            return split[0] + "," + x + "," + y + "," + z;
         } else {
-            String comp = Stream.of(split).collect(Collectors.joining(","));
+            String comp = String.join(",", split);
             if (pre.equals(comp)) {
                 return pre;
             } else {
@@ -133,17 +130,15 @@ public class Localtions {
             return "Error：" + id;
         } else {
             String[] split = result.split(",");
-            StringBuffer stringBuffer = new StringBuffer();
-            stringBuffer.append(split[0])
-                    .append(" ")
-                    .append(id)
-                    .append(" ")
-                    .append(split[1])
-                    .append(" ")
-                    .append(split[2])
-                    .append(" ")
-                    .append(split[3]);
-            return stringBuffer.toString();
+            return split[0] +
+                    " " +
+                    id +
+                    " " +
+                    split[1] +
+                    " " +
+                    split[2] +
+                    " " +
+                    split[3];
         }
     }
 }

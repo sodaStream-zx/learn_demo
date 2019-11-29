@@ -12,7 +12,7 @@ public class NumberTest {
         System.out.println("MaxInt = " + (maxValue + Integer.MAX_VALUE));
         System.out.println(Boolean.parseBoolean(String.valueOf(1)));
         NumberTest numberTest = new NumberTest();
-        System.out.printf(numberTest.toString());
+        System.out.print(numberTest.toString());
     }
 }
 

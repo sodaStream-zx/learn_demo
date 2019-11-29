@@ -25,7 +25,6 @@ public class ioDecorator extends FilterInputStream {
             while ((c = inputStream.read()) >= 0) {
                 System.out.print((char) c);
                 //System.out.print(c);
-
             }
         } catch (Exception e) {
             e.printStackTrace();

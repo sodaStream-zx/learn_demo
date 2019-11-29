@@ -18,10 +18,7 @@ public class Publisher {
                 Message message = session.createTextMessage("消息条数_" + i);
                 producer.send(message);
                 TimeUnit.SECONDS.sleep(1);
-            } catch (JMSException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (JMSException | InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }

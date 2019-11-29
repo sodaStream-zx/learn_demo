@@ -18,8 +18,8 @@ public class Client {
         Moveable tank2 = new ByExtends();
         tank2.move();
 
-        Moveable tank3 = new ByComponet();
-        ((ByComponet) tank3).setTank(tank);
+        ByComponet tank3 = new ByComponet();
+        tank3.setTank(tank);
         tank3.move();
     }
 }

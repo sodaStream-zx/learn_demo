@@ -39,8 +39,7 @@ public class SmsDemo {
      * 生成短信验证码
      */
     public static int generateValidCode() {
-        int validCode = (int) ((Math.random() * 9 + 1) * 100000);
-        return validCode;
+        return (int) ((Math.random() * 9 + 1) * 100000);
     }
 
     public static SendSmsResponse sendSms(String mobilephone, String validCode) throws ClientException {
@@ -72,9 +71,8 @@ public class SmsDemo {
         request.setOutId("yourOutId");
 
         //hint 此处可能会抛出异常，注意catch
-        SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
 
-        return sendSmsResponse;
+        return acsClient.getAcsResponse(request);
     }
 
 
@@ -104,9 +102,8 @@ public class SmsDemo {
         request.setCurrentPage(1L);
 
         //hint 此处可能会抛出异常，注意catch
-        QuerySendDetailsResponse querySendDetailsResponse = acsClient.getAcsResponse(request);
 
-        return querySendDetailsResponse;
+        return acsClient.getAcsResponse(request);
     }
 
     public static void main(String[] args) throws ClientException, InterruptedException {

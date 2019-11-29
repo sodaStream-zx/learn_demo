@@ -47,7 +47,7 @@ public class StreamProblemTest {
     @Test
     public void test3() {
         Instant start = Instant.now();
-        Long sum = LongStream.range(0, 1000000000L).parallel().reduce(0, Long::sum);
+        long sum = LongStream.range(0, 1000000000L).parallel().reduce(0, Long::sum);
         Instant end = Instant.now();
         System.out.println("time : " + Duration.between(start, end).toMillis() + "mills,result : " + sum);
     }

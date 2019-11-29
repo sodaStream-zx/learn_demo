@@ -1,6 +1,9 @@
 package pri.zxx.learndemo.javaIo;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * @author Twilight
@@ -18,8 +21,6 @@ public class IOtest {
                 byte[] cons = new byte[(int) doc.length()];
                 is.read(cons);
                 System.out.println("文件大小：" + new String(cons).getBytes().length);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }

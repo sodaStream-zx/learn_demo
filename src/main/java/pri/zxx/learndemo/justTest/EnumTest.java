@@ -22,8 +22,7 @@ public enum EnumTest {
     public static void main(String[] args) {
         Integer code = EnumTest.THEEXCEPTION.getCode();
         System.out.println(code);
-        EnumTest thesuccecss = EnumTest.THESUCCECSS;
-        System.out.println(thesuccecss.toString());
+        System.out.println(EnumTest.THESUCCECSS.toString());
     }
 
     public String getMsg() {

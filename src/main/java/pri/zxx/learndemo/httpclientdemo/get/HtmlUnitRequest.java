@@ -7,7 +7,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.logging.Logger;
 
 /**
@@ -42,9 +41,6 @@ public class HtmlUnitRequest implements ISendRequest {
             webClient.waitForBackgroundJavaScript(10000);
             String htmlString = htmlPage.asXml();
             return Jsoup.parse(htmlString);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
         } catch (IOException e) {
             e.printStackTrace();
             return null;

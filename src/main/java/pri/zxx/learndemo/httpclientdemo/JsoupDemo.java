@@ -30,7 +30,7 @@ public class JsoupDemo {
         CloseableHttpClient client = HttpClients.createDefault();
 
         HttpGet httpGet = new HttpGet(url);
-        CloseableHttpResponse response = null;
+        CloseableHttpResponse response;
         RequestConfig config = RequestConfig.custom().setConnectTimeout(10000).setSocketTimeout(10000).build();
         try {
             httpGet.setConfig(config);

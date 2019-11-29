@@ -46,11 +46,7 @@ public class FutureTaskTest {
 
         FutureTask ft = new FutureTask(() -> {
             Optional<Integer> reduce = Stream.iterate(1, s -> s + 2).limit(10).reduce(Integer::sum);
-            if (reduce.isPresent()) {
-                return reduce.get();
-            } else {
-                return 0;
-            }
+            return reduce.orElse(0);
         });
         executor.submit(ft);
         System.out.println(ft.get());

@@ -1,7 +1,6 @@
 package pri.zxx.learndemo.xmlpaser;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
@@ -29,21 +28,21 @@ public class Saxdom extends DefaultHandler {
     }
 
     @Override
-    public void startDocument() throws SAXException {
+    public void startDocument() {
         // TODO Auto-generated method stub
         user = new User();
         System.out.println("开始解析文档");
     }
 
     @Override
-    public void endDocument() throws SAXException {
+    public void endDocument() {
         // TODO Auto-generated method stub
         prinlist(users);
         System.out.println("结束解析文档");
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         // TODO Auto-generated method stub
         //开始打印节点名
         System.out.print("<" + qName + " ");
@@ -61,17 +60,17 @@ public class Saxdom extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         // TODO Auto-generated method stub
         System.out.println("<" + qName + ">");
-        if (qName.equals(user)) {
+        if (qName.equals(user.getName())) {
             users.add(user);
         }
         flag = "";
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         // TODO Auto-generated method stub
         String text = String.copyValueOf(ch, start, length).trim();
         switch (flag) {
@@ -90,8 +89,8 @@ public class Saxdom extends DefaultHandler {
     }
 
     public void prinlist(List<User> list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).toString());
+        for (User value : list) {
+            System.out.println(value.toString());
         }
     }
 }

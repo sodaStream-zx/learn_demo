@@ -37,7 +37,7 @@ public class PicTest {
      * @date 2018/12/13
      * @params [backPicPath, code]
      */
-    public static final void combineCodeAndPicToFile(String backPicPath, BufferedImage code) {
+    public static void combineCodeAndPicToFile(String backPicPath, BufferedImage code) {
         try {
             BufferedImage big = ImageIO.read(new File(backPicPath));
             /*//合成两个文件时使用
@@ -66,7 +66,7 @@ public class PicTest {
      * @date 2018/12/13
      * @params [backPicPath, code]
      */
-    public static final void combineCodeAndPicToInputstream(String backPicPath, BufferedImage code, HttpServletResponse resp) {
+    public static void combineCodeAndPicToInputstream(String backPicPath, BufferedImage code, HttpServletResponse resp) {
         try {
             BufferedImage big = ImageIO.read(new File(backPicPath));
             // BufferedImage small = ImageIO.read(new File(fillPicPath));
@@ -97,7 +97,7 @@ public class PicTest {
      * @params [backPicPath, code]
      */
     public static String combineCodeAndPicToBase64(String backPicPath, BufferedImage code) {
-        ImageOutputStream imOut = null;
+        ImageOutputStream imOut;
         try {
             BufferedImage big = ImageIO.read(new File(backPicPath));
             // BufferedImage small = ImageIO.read(new File(fillPicPath));
@@ -137,14 +137,14 @@ public class PicTest {
      * @date 2018/12/13
      * @params [content 二维码内容, logoImgPath 中间logo, needCompress 是否压缩]
      */
-    private static BufferedImage createImage(String content, String logoImgPath, boolean needCompress) throws IOException, WriterException {
+    private static BufferedImage createImage(String logoImgPath, boolean needCompress) throws IOException, WriterException {
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
         hints.put(EncodeHintType.CHARACTER_SET, CHARSET);
         hints.put(EncodeHintType.MARGIN, 1);
         /*------------------ start-------------------*/
         //200是定义的二维码或小图片的大小
-        BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, 200, 200, hints);
+        BitMatrix bitMatrix = new MultiFormatWriter().encode("https://my.oschina.net/kevin2kelly", BarcodeFormat.QR_CODE, 200, 200, hints);
         int width = bitMatrix.getWidth();
         int height = bitMatrix.getHeight();
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -208,7 +208,7 @@ public class PicTest {
     }
 
     public static void main(String[] args) throws IOException, WriterException {
-        BufferedImage code = createImage("https://my.oschina.net/kevin2kelly", null, false);
+        BufferedImage code = createImage(null, false);
         combineCodeAndPicToFile(System.getProperty("user.dir") + "/bg_share.png", code);
         combineCodeAndPicToBase64(System.getProperty("user.dir") + "/bg_share.png", code);
     }

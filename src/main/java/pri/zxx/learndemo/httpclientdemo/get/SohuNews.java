@@ -27,7 +27,7 @@ public class SohuNews implements NewsPull {
     public void pullNews() {
         logger.info("开始拉取搜狐新闻！");
         // 1.获取首页
-        Document html = null;
+        Document html;
         try {
             html = getHtmlFromUrl(url, false);
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class SohuNews implements NewsPull {
         // 4.根据新闻url访问新闻，获取新闻内容
         newsSet.forEach(news -> {
             logger.info("开始抽取搜狐新闻内容：{}" + news.getUrl());
-            Document newsHtml = null;
+            Document newsHtml;
             try {
                 newsHtml = getHtmlFromUrl(news.getUrl(), false);
                 Element newsContent = newsHtml.select("div#article-container")

@@ -49,7 +49,7 @@ public class ColletorToMap {
                 .map(x -> x.replace(":", ""))
                 .forEach(System.out::println);
         System.out.println("-----------------");
-        String str = Stream.of(keyValue).reduce(String::concat).get();
+        String str = Stream.of(keyValue).reduce(String::concat).orElse("");
         System.out.println(str);
         System.out.println("-----------------");
         Stream.of(list.split(","))

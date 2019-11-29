@@ -14,9 +14,7 @@ public class SemaphoreTest {
     public static void main(String[] args) throws InterruptedException {
         SemaphoreTest semaphoreTest = new SemaphoreTest();
         for (int i = 0; i < 5; i++) {
-            new Thread(() -> {
-                semaphoreTest.test();
-            }, "thread-" + i + "-").start();
+            new Thread(semaphoreTest::test, "thread-" + i + "-").start();
         }
         TimeUnit.SECONDS.sleep(15);
     }

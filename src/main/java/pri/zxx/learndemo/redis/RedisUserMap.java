@@ -87,8 +87,7 @@ public class RedisUserMap {
 
     //远程清空缓存
     public Boolean deleteCache(Long realId) {
-        Boolean delete = redisTemplate.delete(realId + "-cacheData");
-        return delete;
+        return redisTemplate.delete(realId + "-cacheData");
     }
 
     //复制

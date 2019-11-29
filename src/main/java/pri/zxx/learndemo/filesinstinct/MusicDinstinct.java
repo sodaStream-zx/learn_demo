@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,22 +21,22 @@ public class MusicDinstinct {
         String path = "E:\\";
         musicDinstinct.listFiles(new File(path));
         System.out.println("总数量：：" + musicDinstinct.allFile.size());
-        long count = musicDinstinct.allFile.stream().map(file -> file.getName()).distinct().count();
+        long count = musicDinstinct.allFile.stream().map(File::getName).distinct().count();
         System.out.println("去重后数量：" + count);
 
 
         //获取重复的文件名称
         List<String> collect = musicDinstinct.allFile.stream()
-                .map(file -> file.getName())
+                .map(File::getName)
                 // 获得元素出现频率的 Map，键为元素，值为元素出现的次数
-                .collect(Collectors.toMap(file -> file, o -> 1, (integer, integer2) -> integer + integer2))
+                .collect(Collectors.toMap(file -> file, o -> 1, Integer::sum))
                 //.collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
                 // 所有 entry 对应的 Stream
                 .entrySet().stream()
                 // 过滤出元素出现次数大于 1 的 entry
                 .filter(entry -> entry.getValue() > 1)
                 // 获得 entry 的键（重复元素）对应的 Stream
-                .map(entry -> entry.getKey())
+                .map(Map.Entry::getKey)
                 // 转化为 List
                 .collect(Collectors.toList());
         System.out.println("----------size---------" + collect.size());
@@ -59,7 +60,7 @@ public class MusicDinstinct {
 
     public void listFiles(File file) {
         if (file.isDirectory()) {
-            Stream.of(file.listFiles()).forEach(f -> listFiles(f));
+            Stream.of(file.listFiles()).forEach(this::listFiles);
         } else {
             if (file.isFile()) {
                 allFile.add(file);

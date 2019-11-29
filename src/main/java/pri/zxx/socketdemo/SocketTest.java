@@ -2,7 +2,9 @@ package pri.zxx.socketdemo;
 
 import org.apache.commons.io.IOUtils;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -19,8 +21,7 @@ public class SocketTest {
         out.println("hello socket!!");
         out.flush();
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        byte[] bytes = IOUtils.toByteArray(bufferedReader);
+        byte[] bytes = IOUtils.toByteArray(socket.getInputStream());
         System.out.println(new String(bytes));
         socket.close();
 

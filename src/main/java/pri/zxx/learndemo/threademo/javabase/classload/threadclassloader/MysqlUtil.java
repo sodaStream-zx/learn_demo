@@ -33,8 +33,7 @@ public class MysqlUtil {
     public Connection getCon() {
         try {
             Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, user, password);
-            return connection;
+            return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("未找到驱动");
@@ -48,7 +47,7 @@ public class MysqlUtil {
 
     public void show(Connection connection) {
         String sql = "select * from siteconfig where scid = 2";
-        PreparedStatement pr = null;
+        PreparedStatement pr;
         try {
             pr = connection.prepareStatement(sql);
             ResultSet resultSet = pr.executeQuery();

@@ -27,7 +27,7 @@ public class HtmlUnitDemo {
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
         webClient.getOptions().setTimeout(10000);
-        HtmlPage htmlPage = null;
+        HtmlPage htmlPage;
         try {
             htmlPage = webClient.getPage(url);
             webClient.waitForBackgroundJavaScript(10000);

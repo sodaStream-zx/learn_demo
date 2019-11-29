@@ -42,7 +42,7 @@ public class JwtTokenFactory {
 
         LocalDateTime currentTime = LocalDateTime.now();
 
-        String token = Jwts.builder()
+        return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant()))
                 .setExpiration(Date.from(currentTime
@@ -50,8 +50,6 @@ public class JwtTokenFactory {
                         .atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(SignatureAlgorithm.HS512, signingKey)
                 .compact();
-
-        return token;
     }
 
 
@@ -64,9 +62,7 @@ public class JwtTokenFactory {
      */
     public static Map<String, Object> parseJavaWebToken(String jwt, String signKey) {
         try {
-            Map<String, Object> jwtClaims =
-                    Jwts.parser().setSigningKey(getKeyInstance(signKey)).parseClaimsJws(jwt).getBody();
-            return jwtClaims;
+            return Jwts.parser().setSigningKey(getKeyInstance(signKey)).parseClaimsJws(jwt).getBody();
         } catch (Exception e) {
             log.error("json web token verify failed" + e.getMessage() + "::" + e.getCause());
             return null;
@@ -77,7 +73,6 @@ public class JwtTokenFactory {
         // We will sign our JavaWebToken with our ApiKey secret
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS512;
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(signKey);
-        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
-        return signingKey;
+        return new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
     }
 }
