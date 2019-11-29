@@ -30,7 +30,7 @@ public class HashTestControoler {
     @ApiOperation(value = "同步url hashcode 到mysql")
     public void insertH() {
         List<String> urls = testService.urls();
-        urls.stream().forEach(s -> {
+        urls.forEach(s -> {
             testService.insertHash(s.hashCode(), s);
             log.warn("insert {}", s);
         });
@@ -41,13 +41,13 @@ public class HashTestControoler {
     public HashMap findAv(String hash, String url) {
         HashMap<String, Long> stringLong = new HashMap<>();
         if (!StringUtils.isEmpty(hash)) {
-            Long st = System.currentTimeMillis();
+            long st = System.currentTimeMillis();
             List<Integer> hashV = testService.findByHash(hash);
             stringLong.put("hash cost", (System.currentTimeMillis() - st));
             System.out.println("hashv:" + hashV);
         }
         if (!StringUtils.isEmpty(url)) {
-            Long st = System.currentTimeMillis();
+            long st = System.currentTimeMillis();
             List<String> urlV = testService.findByUrl(url);
             stringLong.put("url cost ", (System.currentTimeMillis() - st));
             System.out.println("url:" + urlV);
@@ -58,14 +58,12 @@ public class HashTestControoler {
     @GetMapping(value = "/hashv")
     @ApiOperation(value = "查询hash 或者urll")
     public List<Integer> hashv(String hash) {
-        List<Integer> hashV = testService.findByHash(hash);
-        return hashV;
+        return testService.findByHash(hash);
     }
 
     @GetMapping(value = "/url")
     @ApiOperation(value = "查询hash 或者urll")
     public List<String> url(String url) {
-        List<String> urls = testService.findByUrl(url);
-        return urls;
+        return testService.findByUrl(url);
     }
 }

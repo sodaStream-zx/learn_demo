@@ -20,12 +20,11 @@ public class DbUtil {
     public static Connection getCon() {
         try {
             Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, username, password);
-            return connection;
+            return DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
-            System.out.printf("加载数据库驱动异常：" + e);
+            System.out.print("加载数据库驱动异常：" + e);
         } catch (SQLException e) {
-            System.out.printf("获取数据库连接异常：" + e);
+            System.out.print("获取数据库连接异常：" + e);
         }
         return null;
     }
@@ -47,7 +46,7 @@ public class DbUtil {
             }
             System.out.println("所有连接已关闭");
         } catch (SQLException e) {
-            System.out.printf("关闭数据库连接异常：" + e);
+            System.out.print("关闭数据库连接异常：" + e);
         }
     }
 }

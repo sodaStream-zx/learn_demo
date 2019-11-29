@@ -89,11 +89,7 @@ public class MsgOps {
                     String imie = hashMap.get("imie");
                     return ImieMsg.contains(imie);
                 }).findAny();
-        if (any.isPresent()) {
-            return (String) any.get();
-        } else {
-            return null;
-        }
+        return any.orElse(null).toString();
     }
 
     //清除状态机队列

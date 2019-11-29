@@ -93,7 +93,7 @@ public class MsgOpsTest {
 
         List<String> listA = Arrays.asList(As);
         List<String> comss = Arrays.asList(coms);
-        threadPoolExecutor.execute(() -> comss.stream().forEach(s -> {
+        threadPoolExecutor.execute(() -> comss.forEach(s -> {
             msgOps.gainMsg(s);
             try {
                 TimeUnit.MILLISECONDS.sleep(200);
@@ -101,7 +101,7 @@ public class MsgOpsTest {
                 e.printStackTrace();
             }
         }));
-        threadPoolExecutor.execute(() -> listA.stream().forEach(s -> {
+        threadPoolExecutor.execute(() -> listA.forEach(s -> {
             msgOps.gainMsg(s);
             try {
                 TimeUnit.MILLISECONDS.sleep(200);
@@ -112,7 +112,7 @@ public class MsgOpsTest {
 
 
         List<String> listB = Arrays.asList(Bs);
-        threadPoolExecutor.execute(() -> listB.stream().forEach(s -> {
+        threadPoolExecutor.execute(() -> listB.forEach(s -> {
             msgOps.gainMsg(s);
             try {
                 TimeUnit.MILLISECONDS.sleep(200);
@@ -121,7 +121,7 @@ public class MsgOpsTest {
             }
         }));
         List<String> listc = Arrays.asList(Bs2);
-        threadPoolExecutor.execute(() -> listc.stream().forEach(s -> {
+        threadPoolExecutor.execute(() -> listc.forEach(s -> {
             msgOps.gainMsg(s);
             try {
                 TimeUnit.MILLISECONDS.sleep(200);
@@ -130,7 +130,7 @@ public class MsgOpsTest {
             }
         }));
         List<String> listD = Arrays.asList(Bs3);
-        threadPoolExecutor.execute(() -> listD.stream().forEach(s -> {
+        threadPoolExecutor.execute(() -> listD.forEach(s -> {
             msgOps.gainMsg(s);
             try {
                 TimeUnit.MILLISECONDS.sleep(200);

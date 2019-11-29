@@ -207,7 +207,7 @@ public class PicTest {
         graph.dispose();
     }
 
-    public static final void main(String[] args) throws IOException, WriterException {
+    public static void main(String[] args) throws IOException, WriterException {
         BufferedImage code = createImage("https://my.oschina.net/kevin2kelly", null, false);
         combineCodeAndPicToFile(System.getProperty("user.dir") + "/bg_share.png", code);
         combineCodeAndPicToBase64(System.getProperty("user.dir") + "/bg_share.png", code);

@@ -26,7 +26,7 @@ public class LogRecordAspect {
 
     // 定义切点Pointcut
     @Pointcut(value = string)
-    public void excudeService() {
+    public void excuteService() {
     }
 
 //    //执行切点 之前
@@ -42,7 +42,7 @@ public class LogRecordAspect {
     // 通知（环绕）
     @Around("excudeService()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        Long startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
         ServletRequestAttributes sra = (ServletRequestAttributes) ra;
         HttpServletRequest request = sra.getRequest();
