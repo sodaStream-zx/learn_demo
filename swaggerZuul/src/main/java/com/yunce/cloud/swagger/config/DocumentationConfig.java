@@ -29,16 +29,16 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
 //        /usercenter/是网关路由，/v2/api-docs是swagger中的
         zuulProperties.getRoutes().
                 forEach((s, zuulRoute) ->
-                        resources.add(swaggerResource(s, zuulProperties.getPrefix() + zuulRoute.getPath().replace("**", "") + "v2/api-docs", "v1.0")));
+                        resources.add(swaggerResource(s, zuulProperties.getPrefix() + zuulRoute.getPath().replace("**", "") + "v2/api-docs")));
         return resources;
     }
 
     //构造服务interfaces
-    private SwaggerResource swaggerResource(String name, String location, String version) {
+    private SwaggerResource swaggerResource(String name, String location) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
-        swaggerResource.setSwaggerVersion(version);
+        swaggerResource.setSwaggerVersion("v1.0");
         return swaggerResource;
     }
 
