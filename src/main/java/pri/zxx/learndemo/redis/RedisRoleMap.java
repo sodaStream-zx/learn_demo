@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 //@Service
-public class RedisUserMap {
+public class RedisRoleMap {
     private static final Logger log = LoggerFactory.getLogger(RedisOpsTest.class);
     @Autowired
     RedisTemplate redisTemplate;
