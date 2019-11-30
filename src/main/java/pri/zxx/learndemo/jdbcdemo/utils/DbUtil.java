@@ -14,19 +14,24 @@ public class DbUtil {
     private static final String username = "root";
     private static final String password = "zxx1994";
 
+    static {
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            System.out.print("加载数据库驱动异常：" + e);
+        }
+    }
+
     /**
      * 获取数据库连接
      */
     public static Connection getCon() {
         try {
-            Class.forName(driver);
             return DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException e) {
-            System.out.print("加载数据库驱动异常：" + e);
         } catch (SQLException e) {
             System.out.print("获取数据库连接异常：" + e);
+            return null;
         }
-        return null;
     }
 
 
