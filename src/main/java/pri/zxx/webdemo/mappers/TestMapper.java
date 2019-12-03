@@ -15,13 +15,7 @@ import java.util.List;
  */
 @Mapper
 public interface TestMapper {
-    /*
-        private Long id;
-        private String role_name;
-        private Integer enabled;
-        private LocalDateTime create_time;
-        private Long create_by;
-    */
+
     @Insert(value = "insert into sys_role (role_name,enabled,create_time,create_by) values (" +
             "#{u.role_name},#{u.enabled},#{u.create_time},#{u.create_by}" +
             ")")

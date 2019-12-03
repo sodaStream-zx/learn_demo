@@ -33,7 +33,6 @@ public class LearnDemoApplication {
         redisTemplate.setKeySerializer(new FastJsonRedisSerializer(Object.class));
         redisTemplate.setHashKeySerializer(new FastJsonRedisSerializer(Object.class));
         redisTemplate.setHashValueSerializer(new FastJsonRedisSerializer(Object.class));
-//        this.redisUserMap.ConcurrentTest();
     }
 
     @Bean

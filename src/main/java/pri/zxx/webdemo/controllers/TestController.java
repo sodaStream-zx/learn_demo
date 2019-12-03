@@ -23,7 +23,6 @@ import pri.zxx.webdemo.services.TestService;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -53,9 +52,9 @@ public class TestController {
 
     @GetMapping(value = "/insert")
     @ApiOperation(value = "测试插入指定数量数据")
-    @ApiImplicitParams(@ApiImplicitParam(name = "count", value = "数量", required = false))
+    @ApiImplicitParams(@ApiImplicitParam(name = "count", value = "数量"))
     public String toInsert(Integer count, SysRole sysRole1) {
-        Long st = System.currentTimeMillis();
+        long st = System.currentTimeMillis();
         SysRole sysRole = null;
         if (count == null) {
             return "ok";
@@ -64,8 +63,8 @@ public class TestController {
             sysRole = new SysRole();
             sysRole.setRole_name(name[new Random().nextInt(6)]);
             sysRole.setEnabled(new Random().nextInt(2));
-            sysRole.setCreate_time(LocalDateTime.now().minusMonths(Long.valueOf(i)).format(DateTimeFormatter.ISO_DATE));
-            sysRole.setCreate_by(Long.valueOf(i));
+            sysRole.setCreate_time(LocalDateTime.now().minusMonths(i).format(DateTimeFormatter.ISO_DATE));
+            sysRole.setCreate_by((long) i);
             testService.insertOne(sysRole);
         }
         log.warn((System.currentTimeMillis() - st));
@@ -86,12 +85,6 @@ public class TestController {
     public String handleFileUpload(MultipartFile file) {
         if (!file.isEmpty()) {
             try {
-                /**
-                 * 这段代码执行完毕之后，图片上传到了工程的跟路径； 大家自己扩散下思维，如果我们想把图片上传到
-                 * d:/files大家是否能实现呢？ 等等;
-                 * 这里只是简单一个例子,请自行参考，融入到实际中可能需要大家自己做一些思考，比如： 1、文件路径； 2、文件名；
-                 * 3、文件格式; 4、文件大小的限制;
-                 */
                 String path = System.getProperty("user.dir") + "/myfiles/";
                 File picPath = new File(path);
                 if (!picPath.exists()) {
@@ -107,9 +100,6 @@ public class TestController {
                 log.warn("path:" + destination.getPath());
                 FileUtils.copyToFile(file.getInputStream(), destination);
 //                file.transferTo(destination);
-            } catch (FileNotFoundException e) {
-                log.error("上传文件异常 {}", e);
-                return "上传失败," + e.getMessage();
             } catch (IOException e) {
                 log.error("上传文件异常 {}", e);
                 return "上传失败," + e.getMessage();
@@ -181,7 +171,6 @@ public class TestController {
     }
 
     public Map get(Integer num) {
-        Map entries = redisTemplate.opsForHash().entries(num + "-map");
-        return entries;
+        return redisTemplate.opsForHash().entries(num + "-map");
     }
 }
