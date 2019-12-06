@@ -56,6 +56,6 @@ public class StreamProblemTest {
     public void test4() {
         List<Integer> collect = Stream.iterate(1, integer -> integer + 1).limit(100).collect(Collectors.toList());
         Map<Integer, List<Integer>> collect1 = collect.stream().collect(Collectors.groupingBy(integer -> (integer - 1) / 50));
-        System.out.println(collect1);
+        System.out.print(collect1);
     }
 }

@@ -49,7 +49,7 @@ public class CollectionsTest {
                 new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE),
                 new Employee("WANGER ", 54, 5000.0, Employee.Status.FREE)
         );
-        employees.sort(Comparator.comparingInt(Employee::getAge).thenComparing(Employee::getName));
+        employees.sort(Comparator.comparingInt(Employee::getAge).reversed().thenComparing(Employee::getName));
         employees.forEach(System.out::println);
     }
 }

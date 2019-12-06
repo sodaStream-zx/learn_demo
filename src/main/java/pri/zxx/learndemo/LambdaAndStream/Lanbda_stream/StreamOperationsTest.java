@@ -55,7 +55,7 @@ public class StreamOperationsTest {
         //2. Stream  method
         Stream<String> strtream = Stream.of(array);
         strtream.forEach(System.out::print);
-        log.info(" 无限流---------------");
+        System.out.println(" 无限流---------------");
         Stream.iterate(1, s -> {
             this.pause(1, 0);
             return s + 2;
@@ -73,14 +73,14 @@ public class StreamOperationsTest {
      **/
     @Test
     public void filterOpe() {
-        log.info("stream 切片操作-----------------");
-        log.info("过滤--------------------");
+        System.out.println("stream 切片操作-----------------");
+        System.out.println("过滤--------------------");
         employees.stream().filter(s -> s.getAge() > 18).forEach(System.out::println);
-        log.info("短路操作--------------------");
+        System.out.println("短路操作--------------------");
         employees.stream().filter((e) -> e.getSalary() > 1000.0).limit(2).forEach(System.out::println);
-        log.info("扔掉前2个--------------------");
+        System.out.println("扔掉前2个--------------------");
         employees.stream().skip(2).forEach(System.out::println);
-        log.info("去重--------------------");
+        System.out.println("去重--------------------");
         employees.stream().distinct().forEach(System.out::println);
     }
 
@@ -89,14 +89,14 @@ public class StreamOperationsTest {
      **/
     @Test
     public void mapOpe() {
-        log.info("stream 映射操作-----------------");
+        System.out.println("stream 映射操作-----------------");
         list.stream().map(String::toUpperCase).forEach(System.out::println);
-        log.info("获取emp name ----------------");
+        System.out.println("获取emp name ----------------");
         employees.stream().map(Employee::getName).forEach(System.out::println);
-        log.info("字符串流转字符流 嵌套流 ----------------");
+        System.out.println("字符串流转字符流 嵌套流 ----------------");
         //{aaa,bbb,ccc,ddd}->｛｛a,a,a｝，｛b,b,b｝，｛c,c,c｝，｛d,d,d｝｝
         list.stream().map(StreamOperationsTest::convertToChars).forEach((c) -> c.forEach(System.out::println));
-        log.info("字符串流转字符流 ，并合并流 ----------------");
+        System.out.println("字符串流转字符流 ，并合并流 ----------------");
         //{aaa,bbb,ccc,ddd}->｛｛a,a,a｝，｛b,b,b｝，｛c,c,c｝，｛d,d,d｝｝->{a,a,a,b,b,b,c,c,c,d,d,d}
         list.stream().flatMap(StreamOperationsTest::convertToChars).forEach(System.out::println);
     }
@@ -106,10 +106,10 @@ public class StreamOperationsTest {
      **/
     @Test
     public void sortOpe() {
-        log.info("stream 排序操作-----------------");
-        log.info("自然排序----------------");
+        System.out.println("stream 排序操作-----------------");
+        System.out.println("自然排序----------------");
         list.stream().sorted().forEach(System.out::println);
-        log.info("自定义排序----------------");
+        System.out.println("自定义排序----------------");
         employees.stream().sorted((e1, e2) -> {
             if (e1.getAge() == e2.getAge()) {
                 return e1.getName().compareTo(e2.getName());
@@ -124,21 +124,21 @@ public class StreamOperationsTest {
      **/
     @Test
     public void stopOpe() {
-        log.info("------------stream 终止操作-----------------");
+        System.out.println("------------stream 终止操作-----------------");
         boolean allMatch = employees.stream().allMatch((s) -> s.getStatus().equals(Employee.Status.BUSY));
-        log.info("匹配所有 : " + allMatch);
+        System.out.println("匹配所有 : " + allMatch);
         boolean anyMatch = employees.stream().anyMatch((s) -> s.getStatus().equals(Employee.Status.BUSY));
-        log.info("至少匹配一个 : " + anyMatch);
+        System.out.println("至少匹配一个 : " + anyMatch);
         boolean noneMath = employees.stream().noneMatch((s) -> s.getStatus().equals(Employee.Status.BUSY));
-        log.info("没有匹配 : " + noneMath);
+        System.out.println("没有匹配 : " + noneMath);
         //Optional 容器类
         Optional<Employee> first = employees.stream().sorted(Comparator.comparingDouble(Employee::getSalary)).findFirst();
-        log.info("返回第一个{}", first.orElseGet(Employee::new).toString());
+        System.out.println("返回第一个:" + first.orElseGet(Employee::new).toString());
         long totalNum = employees.size();
-        log.info("返回数量 : " + totalNum);
+        System.out.println("返回数量 : " + totalNum);
         Optional<Double> max = employees.stream().map(Employee::getSalary).max(Double::compare);
         Optional<Double> min = employees.stream().map(Employee::getSalary).min(Double::compare);
-        log.info("返回sanry max/min : " + max.orElse(0.0) + "/" + min.orElse(0.0));
+        System.out.println("返回sanry max/min : " + max.orElse(0.0) + "/" + min.orElse(0.0));
 
     }
 
@@ -147,24 +147,24 @@ public class StreamOperationsTest {
      **/
     @Test
     public void reduceOpe() {
-        log.info("stream 归约操作-----------------");
+        System.out.println("stream 归约操作-----------------");
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        log.info("--------reduce(ope)---------");
+        System.out.println("--------reduce(ope)---------");
         int sum = list.stream().reduce(0, Integer::sum);
-        log.info("reduce(seed,ope) with seeds : " + sum);
+        System.out.println("reduce(seed,ope) with seeds : " + sum);
         OptionalDouble total = employees.stream().mapToDouble(Employee::getSalary).reduce(Double::sum);
-        log.info("reduce(ope) total no seeds : " + total.orElse(0.0));
+        System.out.println("reduce(ope) total no seeds : " + total.orElse(0.0));
 
-        log.info("---------- collector 收集器---------");
-        log.info("---------- collector.toList---------");
+        System.out.println("---------- collector 收集器---------");
+        System.out.println("---------- collector.toList---------");
         employees.stream().map(Employee::getName).collect(Collectors.toList()).forEach(System.out::println);
-        log.info("---------- collector.toset---------");
+        System.out.println("---------- collector.toset---------");
         employees.stream().map(Employee::getName).collect(Collectors.toSet()).forEach(System.out::println);
-        log.info("---------- collector.toCollection(LinkedHashMap)---------");
+        System.out.println("---------- collector.toCollection(LinkedHashMap)---------");
         employees.stream().map(Employee::getName).collect(Collectors.toCollection(LinkedHashSet::new)).forEach(System.out::println);
         long totalNum = employees.stream().map(Employee::getName).count();
-        log.info("---------- collector.counting() = " + totalNum + "---------");
+        System.out.println("---------- collector.counting() = " + totalNum + "---------");
         //averaging* 平均值
         //Summing* 总和
         System.out.println("---------- collector.grouping && partitioningBy---------");

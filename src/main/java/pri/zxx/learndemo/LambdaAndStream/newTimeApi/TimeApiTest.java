@@ -23,12 +23,12 @@ public class TimeApiTest {
     @Test
     public void test() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        log.info(String.valueOf(localDateTime));
+        System.out.println(String.valueOf(localDateTime));
         LocalDateTime time2 = LocalDateTime.of(2015, 10, 19, 22, 10, 20);
-        log.info(String.valueOf(time2));
+        System.out.println(String.valueOf(time2));
         LocalDateTime plusYears = localDateTime.plusYears(1);
-        log.info(String.valueOf(plusYears));
-        log.info(String.valueOf(localDateTime.getDayOfWeek()));
+        System.out.println(String.valueOf(plusYears));
+        System.out.println(String.valueOf(localDateTime.getDayOfWeek()));
 
     }
 
@@ -39,20 +39,20 @@ public class TimeApiTest {
     public void instantDemo() throws InterruptedException {
         //utc 时区
         Instant isntanttime = Instant.now();
-        log.info(String.valueOf(isntanttime));
+        System.out.println(String.valueOf(isntanttime));
         OffsetDateTime oft = Instant.now().atOffset(ZoneOffset.ofHours(3));
-        log.info(String.valueOf(oft));
-        log.info(String.valueOf(isntanttime.toEpochMilli()));
-        log.info(String.valueOf(Instant.ofEpochSecond(6)));
-        log.info("----------------------------");
+        System.out.println(String.valueOf(oft));
+        System.out.println(String.valueOf(isntanttime.toEpochMilli()));
+        System.out.println(String.valueOf(Instant.ofEpochSecond(6)));
+        System.out.println("----------------------------");
         Instant start1 = Instant.now();
         TimeUnit.SECONDS.sleep(1);
         Instant end = Instant.now();
         Duration du = Duration.between(start1, end);
-        log.info(String.valueOf(du.toMillis()));
+        System.out.println(String.valueOf(du.toMillis()));
         LocalDate st = LocalDate.now();
         LocalDate en = LocalDate.of(2016, 10, 21);
-        log.info(String.valueOf(Period.between(st, en)));
+        System.out.println(String.valueOf(Period.between(st, en)));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class TimeApiTest {
         }
         try {
             for (Future<LocalDate> x : results) {
-                log.info(String.valueOf(x.get(1, TimeUnit.SECONDS)));
+                System.out.println(String.valueOf(x.get(1, TimeUnit.SECONDS)));
             }
         } catch (TimeoutException e) {
             e.printStackTrace();
