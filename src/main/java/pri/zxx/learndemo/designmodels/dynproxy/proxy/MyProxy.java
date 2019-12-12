@@ -15,29 +15,17 @@ import java.lang.reflect.Proxy;
  * @createTime 2018-12-08-0:02
  */
 public class MyProxy {
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException, InterruptedException, ClassNotFoundException {
         Moveable myTank = new Tank();
-
+        Moveable myCar = new Car();
         //被代理类方法调用
         InvocationHandler handler = new MyInvocationHandler<>(myTank);
         //生成代理类
         Class<?> moveAble = Proxy.getProxyClass(Moveable.class.getClassLoader(), Moveable.class);
         Constructor<?> constructor = moveAble.getConstructor(InvocationHandler.class);
-        Moveable o1 = (Moveable) constructor.newInstance(handler);
-
-        o1.move();
-        o1.stop();
-        System.out.println("----------------------------------------------------------");
-
-        Moveable tankPro = (Moveable) Proxy.newProxyInstance(Moveable.class.getClassLoader(), new Class[]{Moveable.class}, handler);
-        tankPro.move();
-        tankPro.stop();
-
-        System.out.println("---------------------------------------------------------");
-        Moveable myCar = new Car();
-        Moveable o = (Moveable) Proxy.newProxyInstance(Moveable.class.getClassLoader(), new Class[]{Moveable.class}, new MyInvocationHandler<>(myCar));
-        o.move();
-        o.stop();
+        Moveable tank = (Moveable) constructor.newInstance(handler);
+        tank.move();
+        tank.stop();
 
         System.out.println("----------------------------------------------------------");
         InvocationHandler carHandler = new MyInvocationHandler<>(myCar);
@@ -47,5 +35,11 @@ public class MyProxy {
         car.move();
         car.stop();
 
+        System.out.println("----------------------------------------------------------");
+        Moveable target = (Moveable) new MyInvocationHandler<>(myCar).createTarget();
+        target.move();
+        target.stop();
+
+        System.out.println("----------------------------------------------------------");
     }
 }

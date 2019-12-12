@@ -2,6 +2,9 @@ package pri.zxx.learndemo.designmodels.dynproxy.imp;
 
 import pri.zxx.learndemo.designmodels.dynproxy.interfaces.Moveable;
 
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author zxx
  * @desc
@@ -9,8 +12,9 @@ import pri.zxx.learndemo.designmodels.dynproxy.interfaces.Moveable;
  */
 public class Car implements Moveable {
     @Override
-    public void move() {
+    public void move() throws InterruptedException {
         System.out.println("我是小车我怕谁？ 时速200km/h ......");
+        TimeUnit.SECONDS.sleep(new Random().nextInt(5));
     }
 
     @Override

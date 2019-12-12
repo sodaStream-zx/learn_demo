@@ -6,7 +6,7 @@ package pri.zxx.learndemo.designmodels.dynproxy.interfaces;
  * @createTime 2018-12-07-22:57
  */
 public interface Moveable {
-    void move();
+    void move() throws InterruptedException;
 
     void stop();
 }

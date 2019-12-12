@@ -3,7 +3,7 @@ package pri.zxx.learndemo.designmodels.dynproxy.mainclient;
 
 import pri.zxx.learndemo.designmodels.dynproxy.imp.Tank;
 import pri.zxx.learndemo.designmodels.dynproxy.interfaces.Moveable;
-import pri.zxx.learndemo.designmodels.dynproxy.proxy.ByComponet;
+import pri.zxx.learndemo.designmodels.dynproxy.proxy.ByComponent;
 import pri.zxx.learndemo.designmodels.dynproxy.proxy.ByExtends;
 
 /**
@@ -12,13 +12,13 @@ import pri.zxx.learndemo.designmodels.dynproxy.proxy.ByExtends;
  * @createTime 2018-12-07-23:04
  */
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Moveable tank = new Tank();
 
         Moveable tank2 = new ByExtends();
         tank2.move();
 
-        ByComponet tank3 = new ByComponet();
+        ByComponent tank3 = new ByComponent();
         tank3.setTank(tank);
         tank3.move();
     }
