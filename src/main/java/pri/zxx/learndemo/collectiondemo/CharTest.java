@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.collectionDemo;
+package pri.zxx.learndemo.collectiondemo;
 
 import org.springframework.util.ObjectUtils;
 

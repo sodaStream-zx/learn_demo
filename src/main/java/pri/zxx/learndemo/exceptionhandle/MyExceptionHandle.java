@@ -1,8 +1,7 @@
-package pri.zxx.learndemo.exceptionHandle;
+package pri.zxx.learndemo.exceptionhandle;
 
 import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +15,7 @@ import java.io.PrintWriter;
  * @desc
  * @createTime 2019-01-21-13:08
  */
-@Component
+//@Component
 public class MyExceptionHandle implements HandlerExceptionResolver {
     private static final Logger log = Logger.getLogger(MyExceptionHandle.class);
 
@@ -38,7 +37,7 @@ public class MyExceptionHandle implements HandlerExceptionResolver {
             StackTraceElement exObj = ex.getStackTrace()[0];
             MyException myException = new MyException();
             myException.setMsg(ex.getMessage());
-            myException.setThrowLocaltion("类名：" + exObj.getClassName()
+            myException.setThrowLocations("类名：" + exObj.getClassName()
                     + "方法：" + exObj.getMethodName()
                     + "行数：" + exObj.getLineNumber());
             myException.setCode("666");

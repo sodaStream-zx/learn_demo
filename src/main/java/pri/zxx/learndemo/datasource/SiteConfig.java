@@ -3,6 +3,9 @@ package pri.zxx.learndemo.datasource;
 import java.io.Serializable;
 
 
+/**
+ * @author zxx
+ */
 public class SiteConfig implements Serializable {
     private static final long serialVersionUID = -7895642865L;
     private int scId;

@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.javaIo;
+package pri.zxx.learndemo.javaio;
 
 import org.junit.Test;
 import org.slf4j.Logger;

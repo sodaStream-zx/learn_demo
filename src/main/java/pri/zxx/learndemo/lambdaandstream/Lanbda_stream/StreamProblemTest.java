@@ -1,7 +1,7 @@
-package pri.zxx.learndemo.LambdaAndStream.Lanbda_stream;
+package pri.zxx.learndemo.lambdaandstream.Lanbda_stream;
 
 import org.junit.Test;
-import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
+import pri.zxx.learndemo.lambdaandstream.entity.Employee;
 
 import java.time.Duration;
 import java.time.Instant;

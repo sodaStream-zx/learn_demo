@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.javaIo;
+package pri.zxx.learndemo.javaio;
 
 import java.io.BufferedInputStream;
 import java.io.File;

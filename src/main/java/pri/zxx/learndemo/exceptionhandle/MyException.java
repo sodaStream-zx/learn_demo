@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.exceptionHandle;
+package pri.zxx.learndemo.exceptionhandle;
 
 /**
  * @author Twilight
@@ -9,7 +9,7 @@ public class MyException extends Exception {
     private int exId;
     private String code;
     private String msg;
-    private String throwLocaltion;
+    private String throwLocations;
     private String requestUrl;
 
     public MyException(String message) {
@@ -43,12 +43,12 @@ public class MyException extends Exception {
         this.msg = msg;
     }
 
-    public String getThrowLocaltion() {
-        return throwLocaltion;
+    public String getThrowLocations() {
+        return throwLocations;
     }
 
-    public void setThrowLocaltion(String throwLocaltion) {
-        this.throwLocaltion = throwLocaltion;
+    public void setThrowLocations(String throwLocations) {
+        this.throwLocations = throwLocations;
     }
 
     public String getRequestUrl() {
@@ -65,7 +65,7 @@ public class MyException extends Exception {
                 "exId=" + exId +
                 ", code='" + code + '\'' +
                 ", msg='" + msg + '\'' +
-                ", throwLocaltion='" + throwLocaltion + '\'' +
+                ", throwLocaltion='" + throwLocations + '\'' +
                 ", requestUrl='" + requestUrl + '\'' +
                 '}';
     }

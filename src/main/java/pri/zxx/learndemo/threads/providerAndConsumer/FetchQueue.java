@@ -2,7 +2,6 @@ package pri.zxx.learndemo.threads.providerAndConsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -14,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @desc 任务缓存管道
  * @createTime
  */
-@Component
+//@Component
 public class FetchQueue<T> {
     private static final Logger LOG = LoggerFactory.getLogger(FetchQueue.class);
     public final List<T> queue = Collections.synchronizedList(new LinkedList<T>());

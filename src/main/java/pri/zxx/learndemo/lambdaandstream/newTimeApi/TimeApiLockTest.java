@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.LambdaAndStream.newTimeApi;
+package pri.zxx.learndemo.lambdaandstream.newTimeApi;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -4,14 +4,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Twilight
  * @desc
  * @createTime 2019-01-09-21:57
  */
-@Component
+//@Component
 public class BeanGainer implements ApplicationContextAware {
     private static final Logger log = Logger.getLogger(BeanGainer.class);
     private static ApplicationContext context;

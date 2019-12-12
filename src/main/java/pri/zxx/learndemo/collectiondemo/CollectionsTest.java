@@ -1,7 +1,7 @@
-package pri.zxx.learndemo.collectionDemo;
+package pri.zxx.learndemo.collectiondemo;
 
 import org.junit.Test;
-import pri.zxx.learndemo.LambdaAndStream.entity.Employee;
+import pri.zxx.learndemo.lambdaandstream.entity.Employee;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;

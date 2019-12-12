@@ -3,9 +3,6 @@ package pri.zxx.learndemo.threads.providerAndConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import pri.zxx.learndemo.threads.providerAndConsumer.utils.IParesProcess;
 
 import java.util.concurrent.TimeUnit;
@@ -15,8 +12,8 @@ import java.util.concurrent.TimeUnit;
  * @desc 任务消费者
  * @createTime
  */
-@Component(value = "fetcherThread")
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Component(value = "fetcherThread")
+//@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class FetcherThread<T> implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(FetcherThread.class);
     @Autowired

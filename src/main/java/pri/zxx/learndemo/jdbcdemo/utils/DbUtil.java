@@ -9,14 +9,14 @@ import java.sql.*;
  */
 public class DbUtil {
 
-    private static final String url = "jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true";
-    private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String username = "root";
-    private static final String password = "zxx1994";
+    private static final String URL = "jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "zxx1994";
 
     static {
         try {
-            Class.forName(driver);
+            Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {
             System.out.print("加载数据库驱动异常：" + e);
         }
@@ -27,7 +27,7 @@ public class DbUtil {
      */
     public static Connection getCon() {
         try {
-            return DriverManager.getConnection(url, username, password);
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             System.out.print("获取数据库连接异常：" + e);
             return null;

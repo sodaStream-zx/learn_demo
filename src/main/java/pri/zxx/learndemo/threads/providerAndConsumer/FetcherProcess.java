@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import pri.zxx.learndemo.threads.providerAndConsumer.utils.BeanGainer;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @desc 调度器，生产者，任务管道，消费者调度器
  * @createTime
  */
-@Component
+//@Component
 public class FetcherProcess {
     private static final Logger LOG = LoggerFactory.getLogger(FetcherProcess.class);
 

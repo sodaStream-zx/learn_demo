@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.LambdaAndStream.Lanbda_stream;
+package pri.zxx.learndemo.lambdaandstream.Lanbda_stream;
 
 import org.junit.Test;
 

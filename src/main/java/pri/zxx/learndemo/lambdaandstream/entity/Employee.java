@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.LambdaAndStream.entity;
+package pri.zxx.learndemo.lambdaandstream.entity;
 
 /**
  * @author Twilight

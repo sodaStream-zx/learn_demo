@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import pri.zxx.learndemo.threads.providerAndConsumer.utils.IGenerator;
 
 import java.util.concurrent.TimeUnit;
@@ -14,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @desc 任务生产者
  * @createTime
  */
-@Component
+//@Component
 //@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class QueueFeeder<T> implements Runnable {
 

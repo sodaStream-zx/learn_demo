@@ -12,6 +12,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * @author zxx
+ */
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableDiscoveryClient

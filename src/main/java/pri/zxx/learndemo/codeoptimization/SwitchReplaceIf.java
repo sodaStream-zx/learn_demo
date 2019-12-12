@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.codeOptimization;
+package pri.zxx.learndemo.codeoptimization;
 
 /**
  * @author zxx
