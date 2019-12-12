@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threads.providerAndConsumer.utils;
+package pri.zxx.learndemo.providerandconsumer.utils;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;

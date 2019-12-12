@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threads.providerAndConsumer.utils;
+package pri.zxx.learndemo.providerandconsumer.utils;
 
 /**
  * @author 一杯咖啡

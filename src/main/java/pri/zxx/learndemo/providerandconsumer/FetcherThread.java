@@ -1,9 +1,9 @@
-package pri.zxx.learndemo.threads.providerAndConsumer;
+package pri.zxx.learndemo.providerandconsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import pri.zxx.learndemo.threads.providerAndConsumer.utils.IParesProcess;
+import pri.zxx.learndemo.providerandconsumer.utils.IParesProcess;
 
 import java.util.concurrent.TimeUnit;
 

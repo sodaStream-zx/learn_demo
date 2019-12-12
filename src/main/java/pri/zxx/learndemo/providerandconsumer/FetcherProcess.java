@@ -1,10 +1,10 @@
-package pri.zxx.learndemo.threads.providerAndConsumer;
+package pri.zxx.learndemo.providerandconsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import pri.zxx.learndemo.threads.providerAndConsumer.utils.BeanGainer;
+import pri.zxx.learndemo.providerandconsumer.utils.BeanGainer;
 
 import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;

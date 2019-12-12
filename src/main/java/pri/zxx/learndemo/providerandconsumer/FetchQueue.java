@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threads.providerAndConsumer;
+package pri.zxx.learndemo.providerandconsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
