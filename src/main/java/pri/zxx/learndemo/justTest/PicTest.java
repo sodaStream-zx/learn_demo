@@ -18,9 +18,9 @@ import java.net.URLEncoder;
 import java.util.Base64;
 import java.util.Hashtable;
 
+import static io.undertow.security.impl.BasicAuthenticationMechanism.CHARSET;
 import static java.awt.image.ImageObserver.HEIGHT;
 import static java.awt.image.ImageObserver.WIDTH;
-import static org.apache.catalina.manager.Constants.CHARSET;
 
 /**
  * @author Administrator

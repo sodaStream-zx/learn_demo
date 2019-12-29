@@ -1,9 +1,9 @@
 package pri.zxx.learndemo.quartzdemo.demo1;
 
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.impl.JobDetailImpl;
+import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zxx
@@ -11,10 +11,20 @@ import org.quartz.impl.StdSchedulerFactory;
  * @createTime 2019-12-27-下午 3:54
  */
 public class QuartzTestDemo {
-    public void quartzNew() throws SchedulerException {
+    public static void main(String[] args) throws InterruptedException, SchedulerException {
+        new QuartzTestDemo().quartzNew();
+
+    }
+
+    public void quartzNew() throws SchedulerException, InterruptedException {
         StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = stdSchedulerFactory.getScheduler();
+        JobDetail build = JobBuilder.newJob(Dumb.class).storeDurably().build();
+        Trigger trigger = TriggerBuilder.newTrigger().startNow().forJob(build).build();
 
-        scheduler.addJob(new JobDetailImpl(), true);
+        scheduler.scheduleJob(build, trigger);
+        scheduler.start();
+        TimeUnit.SECONDS.sleep(10);
+        scheduler.shutdown();
     }
 }
