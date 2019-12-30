@@ -5,6 +5,7 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.util.StringUtils;
+import pri.zxx.webdemo.quartzdemo.utils.JobExecutorUtil;
 
 /**
  * @author zxx
@@ -14,8 +15,8 @@ import org.springframework.util.StringUtils;
 public class JobFactoryImp implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
-        Object url = jobDataMap.get("url");
+        JobDataMap mergedJobDataMap = jobExecutionContext.getMergedJobDataMap();
+        Object url = mergedJobDataMap.get("url");
         if (!StringUtils.isEmpty(url)) {
             JobExecutorUtil.invokeJob(url.toString());
         } else {

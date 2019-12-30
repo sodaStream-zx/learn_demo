@@ -1,4 +1,4 @@
-package pri.zxx.webdemo.quartzdemo.demo1;
+package pri.zxx.webdemo.quartzdemo.utils;
 
 import org.springframework.web.client.RestTemplate;
 
