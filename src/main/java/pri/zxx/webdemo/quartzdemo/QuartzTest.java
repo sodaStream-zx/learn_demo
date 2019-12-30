@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.quartzdemo;
+package pri.zxx.webdemo.quartzdemo;
 
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;

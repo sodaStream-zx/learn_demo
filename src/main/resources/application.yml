@@ -4,7 +4,7 @@ spring:
   application:
     name: zxx-learn-demo
   redis:
-    host: localhost
+    host: 10.253.254.17
     #    host: 62.234.211.179
     port: 6379
   datasource:
