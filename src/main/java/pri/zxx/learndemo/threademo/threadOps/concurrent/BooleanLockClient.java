@@ -24,7 +24,7 @@ public class BooleanLockClient {
         try {
             booleanLock.lock();
             int randomInt = current().nextInt(10);
-            System.out.println(currentThread() + "get the lock.");
+            System.out.println(currentThread() + "  get the lock.");
             TimeUnit.SECONDS.sleep(randomInt);
         } catch (InterruptedException e) {
             e.printStackTrace();
