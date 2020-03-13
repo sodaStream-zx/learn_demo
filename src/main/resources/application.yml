@@ -4,8 +4,8 @@ spring:
   application:
     name: zxx-learn-demo
   redis:
-    host: 10.253.254.17
-    #    host: 62.234.211.179
+    #    host: 10.253.254.17
+    host: 62.234.211.179
     port: 6379
   datasource:
     url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true
@@ -15,7 +15,10 @@ spring:
     #    password: 1qaz2WSX!@
     password: zxx1994
     driver-class-name: com.mysql.jdbc.Driver
-    type:  com.alibaba.druid.pool.DruidDataSource
+    type:  com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 10000
+      maximum-pool-size: 100
   servlet:
     multipart:
       max-request-size: '20MB'

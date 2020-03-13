@@ -18,7 +18,7 @@ public class Test implements Runnable {
         this.countDownLatch = countDownLatch;
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         CountDownLatch countDownLatch = new CountDownLatch(3);
         Test test = new Test(countDownLatch);
         for (int i = 0; i < 3; i++) {
