@@ -42,7 +42,6 @@ public class LogRecordAspect {
     // 通知（环绕）
     @Around("excudeService()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        long startTime = System.currentTimeMillis();
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
         ServletRequestAttributes sra = (ServletRequestAttributes) ra;
         HttpServletRequest request = sra.getRequest();
@@ -53,6 +52,7 @@ public class LogRecordAspect {
         Object[] args = pjp.getArgs();
         String params = "";
         // result的值就是被拦截方法的返回值
+        long startTime = System.currentTimeMillis();
         Object result = pjp.proceed();
         long endTime = System.currentTimeMillis();
         try {
