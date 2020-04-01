@@ -1,4 +1,4 @@
-package pri.zxx.webdemo.annotation;
+package pri.zxx.myaopdemo.annotation;
 
 import java.lang.annotation.*;
 

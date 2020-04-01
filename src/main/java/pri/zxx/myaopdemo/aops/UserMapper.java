@@ -1,8 +1,8 @@
-package pri.zxx.webdemo.aops;
+package pri.zxx.myaopdemo.aops;
 
-import pri.zxx.webdemo.annotation.ExtParam;
-import pri.zxx.webdemo.annotation.InsertMysql;
-import pri.zxx.webdemo.annotation.SelectMysql;
+import pri.zxx.myaopdemo.annotation.ExtParam;
+import pri.zxx.myaopdemo.annotation.InsertMysql;
+import pri.zxx.myaopdemo.annotation.SelectMysql;
 
 public interface UserMapper {
 

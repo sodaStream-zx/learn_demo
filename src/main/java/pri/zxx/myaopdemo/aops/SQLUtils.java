@@ -1,4 +1,4 @@
-package pri.zxx.webdemo.aops;
+package pri.zxx.myaopdemo.aops;
 
 import java.util.ArrayList;
 import java.util.List;

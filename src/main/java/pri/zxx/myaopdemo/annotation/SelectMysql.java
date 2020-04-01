@@ -1,4 +1,4 @@
-package pri.zxx.webdemo.annotation;
+package pri.zxx.myaopdemo.annotation;
 
 import java.lang.annotation.*;
 
@@ -11,6 +11,6 @@ import java.lang.annotation.*;
 @Documented
 @Target(value = ElementType.METHOD)
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface InsertMysql {
+public @interface SelectMysql {
     String value() default "";
 }

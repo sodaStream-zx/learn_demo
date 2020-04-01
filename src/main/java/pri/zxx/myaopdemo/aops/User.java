@@ -1,4 +1,4 @@
-package pri.zxx.webdemo.aops;
+package pri.zxx.myaopdemo.aops;
 
 public class User {
     private String name;
