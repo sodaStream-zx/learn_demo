@@ -6,13 +6,14 @@ import pri.zxx.webdemo.annotation.SelectMysql;
 
 import java.lang.reflect.*;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author 钢蛋
- * @desc
+ * @desc jdk动态代理
  * @createTime 2020-03-31-10:09
  */
 public class MyInvocationHandlerMybatis implements InvocationHandler {
@@ -33,59 +34,58 @@ public class MyInvocationHandlerMybatis implements InvocationHandler {
         SelectMysql extSelect = method.getDeclaredAnnotation(SelectMysql.class);
         //2.查询
         if (extSelect != null) {
-            //注解存在获取sql
-            String querySql = extSelect.value();
-            //获取参数绑定
-            ConcurrentHashMap<Object, Object> paramMap = getConcurrentHashMap(method, args);
-            List<String> sqlSelectParameter = SQLUtils.sqlSelectParameter(querySql);
-            List sqlParam = new ArrayList();
-            for (String string : sqlSelectParameter) {
-                Object paramValue = paramMap.get(string);
-                sqlParam.add(paramValue);
-            }
-            String newSql = SQLUtils.parameQuestion(querySql, sqlSelectParameter);
-            //调用jdbc
-            ResultSet resultSet = JDBCUtils.query(newSql, sqlParam);
-            if (!resultSet.next()) {
-                return null;
-            }
-            resultSet.previous();//下标上移一位
-            Class<?> returnType = method.getReturnType();
-            Type type = method.getReturnType();
-            System.out.println("returnType:" + returnType);
-            Object object = returnType.newInstance();
-            while (resultSet.next()) {
-                //反射机制获取实例化对象
-                Field[] declaredFields = returnType.getDeclaredFields();
-                for (Field field : declaredFields) {
-                    String fieldName = field.getName();
-                    Object filedValue = resultSet.getObject(fieldName);
-                    field.setAccessible(true);//设置私有属性可以访问
-                    field.set(object, filedValue);
-                }
-             /*   for (String paramName : sqlSelectParameter) {
-                    Object resultValue = resultSet.getObject(paramName);
-                    Field field = returnType.getDeclaredField(paramName);
-                    field.setAccessible(true);
-                    field.set(object, resultValue);
-                }*/
-            }
-            return object;
+            return selectMysql(method, args, extSelect);
         }
-
+        System.out.println("异常：未添加sql执行方式");
         return null;
     }
 
-    //insert
-    private Object extInsert(InsertMysql extInsert, Method method, Object[] args) {
+    //查询
+    private Object selectMysql(Method method, Object[] args, SelectMysql extSelect) throws SQLException, InstantiationException, IllegalAccessException {
+        //注解存在获取sql
+        String querySql = extSelect.value();
+        //获取参数绑定
+        ConcurrentHashMap<Object, Object> paramMap = getConcurrentHashMap(method, args);
+        List<String> sqlSelectParameter = SQLUtils.sqlSelectParameter(querySql);
+        List sqlParam = new ArrayList();
+        for (String string : sqlSelectParameter) {
+            Object paramValue = paramMap.get(string);
+            sqlParam.add(paramValue);
+        }
+        String newSql = SQLUtils.parameQuestion(querySql, sqlSelectParameter);
+        //调用jdbc
+        ResultSet resultSet = JDBCUtils.query(newSql, sqlParam);
+        if (!resultSet.next()) {
+            return null;
+        }
+        resultSet.previous();//下标上移一位
+        Class<?> returnType = method.getReturnType();
+        Type type = method.getReturnType();
+        System.out.println("returnType:" + returnType);
+        Object object = returnType.newInstance();
+        while (resultSet.next()) {
+            //反射机制获取实例化对象
+            Field[] declaredFields = returnType.getDeclaredFields();
+            for (Field field : declaredFields) {
+                String fieldName = field.getName();
+                Object filedValue = resultSet.getObject(fieldName);
+                field.setAccessible(true);//设置私有属性可以访问
+                field.set(object, filedValue);
+            }
+        }
+        return object;
+    }
+
+    //插入
+    private Object extInsert(InsertMysql insertMysql, Method method, Object[] args) {
         //2.存在注解，获取sql 截取sql
-        String insertSql = extInsert.value();
+        String insertSql = insertMysql.value();
         System.out.println("insertSql:" + insertSql);
 
         //3.获取参数 定义map集合接收参数
         ConcurrentHashMap<Object, Object> paramMap = getConcurrentHashMap(method, args);
 
-        //4.替换参数  ?
+        //4.替换参数
 
         String[] sqlInsertParameter = SQLUtils.sqlInsertParameter(insertSql);
         List<Object> sqlParams = getSqlParam(sqlInsertParameter, paramMap);
@@ -107,7 +107,7 @@ public class MyInvocationHandlerMybatis implements InvocationHandler {
             if (extParam != null) {
                 String paramName = extParam.value();
                 Object paramValue = args[i];
-                System.out.println(paramName + "---" + paramValue);
+                System.out.println("参数：[" + paramName + "：" + paramValue + "]");
                 /* if(extParam.value()==parameter.getName()){}*/
                 paramMap.put(paramName, paramValue);
             }

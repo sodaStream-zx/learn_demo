@@ -5,15 +5,12 @@ import java.util.List;
 
 /**
  * @author 钢蛋
- * @desc
+ * @desc sql组装 修饰
  * @createTime 2020-03-31-10:09
  */
 public class SQLUtils {
     /**
      * 获取Insert语句后面values 参数信息<br>
-     *
-     * @param sql
-     * @return
      */
     public static String[] sqlInsertParameter(String sql) {
         int startIndex = sql.indexOf("values");
@@ -25,9 +22,6 @@ public class SQLUtils {
 
     /**
      * 获取select 后面where语句
-     *
-     * @param sql
-     * @return
      */
     public static List<String> sqlSelectParameter(String sql) {
         int startIndex = sql.indexOf("where");
@@ -44,12 +38,6 @@ public class SQLUtils {
 
     /**
      * 将SQL语句的参数替换变为?<br>
-     * 作者: 每特教育-余胜军<br>
-     * 联系方式:QQ644064779|WWW.itmayiedu.com<br>
-     *
-     * @param sql
-     * @param parameterName
-     * @return
      */
     public static String parameQuestion(String sql, String[] parameterName) {
         for (String string : parameterName) {

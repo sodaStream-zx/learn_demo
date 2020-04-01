@@ -23,13 +23,6 @@ public final class JDBCUtils {
     private static Connection conn;
 
     static {
-        config();
-    }
-
-    /**
-     * 开头配置自己的数据库信息
-     */
-    private static void config() {
         /*
          * 获取驱动
          */
@@ -37,7 +30,7 @@ public final class JDBCUtils {
         /*
          * 获取URL
          */
-        URL = "jdbc:mysql://localhost:3306/rbac_db?useUnicode=true&characterEncoding=utf8";
+        URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false";
         /*
          * 获取用户名
          */
@@ -45,12 +38,11 @@ public final class JDBCUtils {
         /*
          * 获取密码
          */
-        password = "root";
+        password = "zxx1994";
         /*
          * 设置是否自动提交，一般为false不用改
          */
         autoCommit = false;
-
     }
 
     /**
