@@ -57,20 +57,46 @@ public class SortPrograms {
 
     //打印排序后的队列
     public static void console(int[] array, String way) {
-        System.out.println("排序方法：" + way);
+        System.out.println(way + "--");
         for (int x : array) {
             System.out.print(x + ",");
         }
+        System.out.println("");
+    }
+
+    /**
+     * 插入排序
+     */
+    public static void insertSort(int[] array) {
+
+        int length = array.length;
+        for (int i = 1; i < length - 1; i++) {
+            //当前摸一张
+            int now = array[i];
+            int index = i;
+            while (index > 0) {
+                //与前一张比较 如果前一张大
+                if ((array[index - 1] > now)) {
+                    //把前一张向后移动一位
+                    array[index] = array[index - 1];
+                    //判断后二位时候比当前小
+                    if ((index - 2 >= 0) && (array[index - 2] <= now)) {
+                        array[index - 1] = now;
+                    }
+                }
+                index--;
+            }
+
+        }
+        console(array, "插入排序");
     }
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 5, 7, 6, 4, 5, 3, 5, 8, 4, 5, 4, 4, 4, 55, 1, 2, 3, 12, 4, 5, 3, 234, 635};
         console(arr, "未排序");
-        System.out.println();
-        sort(arr);
-        System.out.println();
-        sortStrage(arr);
-        System.out.println();
-        rreverseSort(arr);
+//        sort(arr);
+//        sortStrage(arr);
+//        rreverseSort(arr);
+        insertSort(arr);
     }
 }
