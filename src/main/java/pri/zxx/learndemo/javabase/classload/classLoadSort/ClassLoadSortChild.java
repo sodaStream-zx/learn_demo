@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.classload.classLoadSort;
+package pri.zxx.learndemo.javabase.classload.classLoadSort;
 
 /**
  * @author: 一杯咖啡

@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.classload.threadclassloader;
+package pri.zxx.learndemo.javabase.classload.threadclassloader;
 
 import static java.lang.Thread.currentThread;
 

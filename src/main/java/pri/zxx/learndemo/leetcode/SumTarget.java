@@ -28,7 +28,7 @@ public class SumTarget {
     }
 
     public static void main(String[] args) {
-        int[] ints = twoSum(new int[]{2, 7, 11, 15}, 9);
+        int[] ints = twoSum(new int[]{2, 7, 11, 15}, 18);
         for (int i = 0; i < ints.length; i++) {
             System.out.println(ints[i]);
         }

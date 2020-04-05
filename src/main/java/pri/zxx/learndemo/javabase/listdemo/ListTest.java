@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.listdemo;
+package pri.zxx.learndemo.javabase.listdemo;
 
 import java.util.Arrays;
 

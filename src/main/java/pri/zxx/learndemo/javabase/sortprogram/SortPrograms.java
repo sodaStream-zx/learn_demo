@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.sortprogram;
+package pri.zxx.learndemo.javabase.sortprogram;
 
 /**
  * desc: 排序算法

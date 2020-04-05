@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.number;
+package pri.zxx.learndemo.javabase.number;
 
 public class NumberTest {
     public static void main(String[] args) {

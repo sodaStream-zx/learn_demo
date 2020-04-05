@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.classload.classinit;
+package pri.zxx.learndemo.javabase.classload.classinit;
 
 /**
  * @author: 一杯咖啡

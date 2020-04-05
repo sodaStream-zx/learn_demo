@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.classload.classloader;
+package pri.zxx.learndemo.javabase.classload.classloader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

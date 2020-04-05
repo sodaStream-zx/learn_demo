@@ -1,4 +1,4 @@
-package pri.zxx.learndemo.threademo.javabase.classload.volatiledemo;
+package pri.zxx.learndemo.javabase.classload.volatiledemo;
 
 import java.util.concurrent.TimeUnit;
 
