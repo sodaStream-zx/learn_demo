@@ -75,10 +75,8 @@ public class SortPrograms {
             int now = array[i];
             int index = i;
             while (index > 0 && (array[index - 1] > now)) {
-                //与前一张比较 如果前一张大
-                //把前一张向后移动一位
+                //与前一张比较 如果前一张大 把前一张向后移动一位
                 array[index] = array[index - 1];
-                //判断后二位时候比当前小
                 index--;
             }
             //把拿到的变量，放入留下来的空位中
@@ -90,9 +88,9 @@ public class SortPrograms {
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 5, 7, 6, 42, 51, 32, 54, 81, 46, 53, 42, 46, 487, 55, 12, 4, 59, 3, 234, 635};
         console(arr, "未排序");
-//        sort(arr);
-//        sortStrage(arr);
-//        rreverseSort(arr);
+        sort(arr);
+        sortStrage(arr);
+        rreverseSort(arr);
         insertSort(arr);
     }
 }
