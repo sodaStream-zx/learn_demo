@@ -74,19 +74,15 @@ public class SortPrograms {
             //当前摸一张
             int now = array[i];
             int index = i;
-            while (index > 0) {
+            while (index > 0 && (array[index - 1] > now)) {
                 //与前一张比较 如果前一张大
-                if ((array[index - 1] > now)) {
-                    //把前一张向后移动一位
-                    array[index] = array[index - 1];
-                    //判断后二位时候比当前小
-                    if ((index - 2 >= 0) && (array[index - 2] <= now)) {
-                        array[index - 1] = now;
-                    }
-                }
+                //把前一张向后移动一位
+                array[index] = array[index - 1];
+                //判断后二位时候比当前小
                 index--;
             }
-
+            //把拿到的变量，放入留下来的空位中
+            array[index] = now;
         }
         console(array, "插入排序");
     }
