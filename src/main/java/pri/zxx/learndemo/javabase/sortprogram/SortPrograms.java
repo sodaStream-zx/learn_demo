@@ -57,9 +57,9 @@ public class SortPrograms {
 
     //打印排序后的队列
     public static void console(int[] array, String way) {
-        System.out.println(way + "--");
+        System.out.print(way + ": ");
         for (int x : array) {
-            System.out.print(x + ",");
+            System.out.print(x + "  ");
         }
         System.out.println("");
     }
@@ -88,7 +88,7 @@ public class SortPrograms {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 2, 5, 7, 6, 4, 5, 3, 5, 8, 4, 5, 4, 4, 4, 55, 1, 2, 3, 12, 4, 5, 3, 234, 635};
+        int[] arr = new int[]{1, 2, 5, 7, 6, 42, 51, 32, 54, 81, 46, 53, 42, 46, 487, 55, 12, 4, 59, 3, 234, 635};
         console(arr, "未排序");
 //        sort(arr);
 //        sortStrage(arr);
