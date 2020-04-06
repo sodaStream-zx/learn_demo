@@ -61,7 +61,7 @@ public class SortPrograms {
         for (int x : array) {
             System.out.print(x + "  ");
         }
-        System.out.println("");
+        System.out.println(" ");
     }
 
     /**

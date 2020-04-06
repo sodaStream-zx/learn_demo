@@ -13,7 +13,7 @@ public final class FirstSingleton {
     private byte[] data = new byte[1024];
 
     private FirstSingleton() {
-        System.out.println("singleton is inital now ");
+        System.out.println("singleton is initial now ");
         try {
             //模拟初始化延迟时间
             TimeUnit.SECONDS.sleep(1);
