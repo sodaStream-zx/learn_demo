@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: learn_demo
+  cloud:
+    nacos:
+      config:
+        server-addr: 62.234.211.179:8848
+        file-extension: yml
+        group: demo
+        namespace: 3f8be2eb-b7d6-4de6-b83b-cb66f4abdade
+#        #读取自定义data-id 配置，可配置多个，按照顺序读取
+#        ext-config[0]:
+#          refresh: true
+#          data-id: datasource.yml
+#          group: aos
+#        ext-config[1]:
+#          refresh: true
+#          data-id: nacosDiscovery.yml
+#          group: aos
+#        ext-config[2]:
+#          refresh: true
+#          data-id: cors.yml
+#          group: aos
+#        ext-config[3]:
+#          refresh: true
+#          data-id: redisCluster.yml
+#          group: aos
+#        ext-config[4]:
+#          refresh: true
+#          data-id: rabbitmq.yml
+#          group: aos
+#        ext-config[5]:
+#          refresh: true
+#          data-id: mongodb.yml
+#          group: aos

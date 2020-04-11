@@ -4,16 +4,16 @@ spring:
   application:
     name: zxx-learn-demo
   redis:
-    #    host: 10.253.254.17
     host: 62.234.211.179
     port: 6379
   datasource:
-    url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true
-    #    url: jdbc:mysql://10.253.50.250:3306/yunce?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    #    url: jdbc:mysql://localhost:3306/mybaties?useUnicode=true&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://62.234.211.179:3306/mybaties?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    #    username: zzyq
-    #    password: 1qaz2WSX!@
-    password: zxx1994
+    #    远程mysql密码
+    password: Zxx1994,.
+    #    本地mysql密码
+    #    password: zxx1994
     driver-class-name: com.mysql.jdbc.Driver
     type:  com.zaxxer.hikari.HikariDataSource
     hikari:
@@ -26,9 +26,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
-        #        server-addr: 10.253.50.31:8848
-        namespace: 18d6f176-e790-4922-8792-ae985b42fdfd
+        server-addr: 62.234.211.179:8848
+        namespace: 3f8be2eb-b7d6-4de6-b83b-cb66f4abdade
 msg:
   #消息处理超时时间s
   timeOut: 30
