@@ -58,6 +58,8 @@ public class Period {
         System.out.println(getThisYear());
         Period period9 = Period.getPeriod("2020-04-14 20:22:52", "2020-04-20 20:22:52");
         System.out.println("custom:" + period9);
+        System.out.println(period9.theStart() + "--" + period9.theEnd() + "--" + period9.thePre_start() + "--" + period9.thePre_end());
+        System.out.println("-----------------------------");
         System.out.println("custom intval:" + period9.getInterval());
         Period period = Period.getPeriod(0);
         Period period1 = Period.getPeriod(1);
